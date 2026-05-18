@@ -38,6 +38,19 @@
 .subtab-count { font-size: 11px; font-weight: 700; opacity: 0.7; }
 ```
 
+```html
+<!-- 퍼블코드 활성 상태 -->
+<div style="display: flex; gap: 8px;">
+  <button class="subtab-btn subtab-active">퍼블코드 <span class="subtab-count">5</span></button>
+  <button class="subtab-btn subtab-inactive">그룹코드 <span class="subtab-count">3</span></button>
+</div>
+<!-- 그룹코드 선택 시 -->
+<div style="display: flex; gap: 8px;">
+  <button class="subtab-btn subtab-inactive">퍼블코드</button>
+  <button class="subtab-btn subtab-purple">그룹코드 <span class="subtab-count">3</span></button>
+</div>
+```
+
 ---
 
 ## CodeChip (코드 표시 칩)
@@ -84,6 +97,11 @@
 
 .codechip-pub .codechip-copy { background: var(--trendy); }
 .codechip-grp .codechip-copy { background: #515382; }
+```
+
+```html
+<div class="codechip codechip-pub">PUBL-7K3M-A2<span class="codechip-copy">복사</span></div>
+<div class="codechip codechip-grp">GRP-2024-XZ7<span class="codechip-copy">복사</span></div>
 ```
 
 ---
@@ -235,6 +253,38 @@
 }
 ```
 
+```html
+<div class="publcard-wrap">
+  <div class="publcard-thumb">
+    <div class="publcard-thumb-circle"></div>
+    <span class="publcard-status">
+      <span class="publcard-status-dot"></span>퍼블코드 · 활성
+    </span>
+    <span class="publcard-noauth">가입 없이 구매 ✓</span>
+    <div style="margin-top: auto;">
+      <p style="font-size: 11px; color: rgba(255,255,255,0.6);">PRODUCT NAME</p>
+      <p style="font-size: 16px; font-weight: 700; color: #fff;">상품 제목</p>
+    </div>
+  </div>
+  <div class="publcard-body">
+    <div>
+      <p class="publcard-price-label">PRICE</p>
+      <p class="publcard-price">37,800<small>원</small></p>
+    </div>
+  </div>
+  <div class="publcard-footer">
+    <div class="publcard-code-row">
+      <span>CODE</span>
+      <span class="publcard-code-val">PUBL-7K3M-A2</span>
+    </div>
+    <div class="publcard-actions">
+      <button class="publcard-btn-url">🔗 URL 복사</button>
+      <button class="publcard-btn-share">▷ 코드 공유</button>
+    </div>
+  </div>
+</div>
+```
+
 ---
 
 ## Field & InlineHelp (퍼블코드 폼)
@@ -302,6 +352,20 @@
 }
 ```
 
+```html
+<!-- Field -->
+<div class="field-group">
+  <label class="field-label">코드 제목</label>
+  <input class="field-input-lg" type="text" placeholder="예: 아이돌 굿즈 포토카드 세트">
+  <p class="field-hint">💡 받는 사람에게 표시되는 이름이에요</p>
+</div>
+
+<!-- InlineHelp -->
+<button class="inlinehelp-btn">
+  <span class="inlinehelp-icon">?</span> 퍼블코드란?
+</button>
+```
+
 ---
 
 ## Stat Card (퍼블코드 버전)
@@ -335,6 +399,20 @@
 
 .stat-card-pc.stat-warn .stat-label,
 .stat-card-pc.stat-warn .stat-value { color: #ea580c; }
+```
+
+```html
+<div class="stat-card-pc">
+  <p class="stat-label">공유한 코드</p>
+  <p class="stat-value">8</p>
+  <p class="stat-sub">퍼블 5 · 그룹 3</p>
+</div>
+<!-- 경고 상태 -->
+<div class="stat-card-pc stat-warn">
+  <p class="stat-label">⚠️ 마감 임박</p>
+  <p class="stat-value">2</p>
+  <p class="stat-sub">D-3 이하 코드</p>
+</div>
 ```
 
 ---
@@ -382,6 +460,14 @@
 }
 
 .cb-label { font-size: 13px; color: var(--text-body); }
+```
+
+```html
+<label class="cb-wrap">
+  <input class="cb-input" type="checkbox">
+  <span class="cb-box"></span>
+  <span class="cb-label">항목 이름</span>
+</label>
 ```
 
 ---
@@ -465,6 +551,23 @@
 .reg-btn.disabled { opacity: 0.4; cursor: not-allowed; }
 ```
 
+```html
+<div class="reg-card">
+  <div class="reg-icon"><!-- 아이콘 SVG --></div>
+  <!-- ① 미입력 상태 -->
+  <input class="reg-input" placeholder="코드 입력">
+  <button class="reg-btn disabled">코드 확인하기</button>
+  <!-- ② 퍼블코드 인식 시 -->
+  <input class="reg-input" value="0RVTZDRDP6">
+  <span class="reg-badge pub"><span class="reg-badge-dot"></span>퍼블코드로 인식됨</span>
+  <button class="reg-btn pub">코드 확인하기</button>
+  <!-- ③ 그룹코드 인식 시 -->
+  <input class="reg-input" value="GRP2024A">
+  <span class="reg-badge grp"><span class="reg-badge-dot"></span>그룹코드로 인식됨</span>
+  <button class="reg-btn grp">그룹 상품 확인하기 →</button>
+</div>
+```
+
 ---
 
 ## 대량 선택 UX (bulk-item)
@@ -534,6 +637,39 @@
 .bulk-title { font-size: 14px; font-weight: 600; }
 .bulk-spec  { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 .bulk-price { font-size: 15px; font-weight: 800; margin-left: auto; }
+```
+
+```html
+<div class="bulk-header">
+  <div>
+    <p>묶을 퍼블코드 선택</p>
+    <p>2개 이상 선택해야 그룹을 만들 수 있어요.</p>
+  </div>
+  <span class="bulk-count-badge">2개 선택</span>
+</div>
+<div style="display: flex; gap: 6px;">
+  <button class="bulk-filter-tab on">전체</button>
+  <button class="bulk-filter-tab off">공개</button>
+  <button class="bulk-filter-tab off">비공개</button>
+</div>
+<!-- 선택된 아이템 -->
+<div class="bulk-item on">
+  <div class="bulk-emoji">🔑</div>
+  <div style="flex: 1;">
+    <p class="bulk-title">봄 아크릴 키링</p>
+    <p class="bulk-spec">아크릴·양면·30×30mm</p>
+  </div>
+  <span class="bulk-price">12,000원</span>
+</div>
+<!-- 미선택 아이템 -->
+<div class="bulk-item">
+  <div class="bulk-emoji">🏅</div>
+  <div style="flex: 1;">
+    <p class="bulk-title">원형 뱃지 세트</p>
+    <p class="bulk-spec">44mm 원형·3개입</p>
+  </div>
+  <span class="bulk-price">7,200원</span>
+</div>
 ```
 
 ---
@@ -614,6 +750,34 @@
 .grp-tile-name { font-size: 10px; font-weight: 600; text-align: center; line-height: 1.3; }
 ```
 
+```html
+<div class="grp-card">
+  <div class="grp-strip">
+    <div class="grp-strip-dot"></div>
+    <span class="grp-strip-label">그룹 공유</span>
+    <!-- 일부 종료 시 추가 -->
+    <span class="grp-strip-partial">· 일부 종료</span>
+  </div>
+  <div class="grp-items-row">
+    <!-- 정상 아이템 -->
+    <div class="grp-tile">
+      <div class="grp-thumb active-t">🌸</div>
+      <p class="grp-tile-name">스티커팩</p>
+    </div>
+    <!-- SOLD OUT 아이템 -->
+    <div class="grp-tile">
+      <div class="grp-thumb soldout-t">
+        <span>🌿</span>
+        <div class="grp-so-overlay">
+          <span class="grp-so-text">SOLD<br>OUT</span>
+        </div>
+      </div>
+      <p class="grp-tile-name">엽서 B</p>
+    </div>
+  </div>
+</div>
+```
+
 ---
 
 ## 그룹관리 탭 & 통계 (grp-tab / grp-stat)
@@ -667,6 +831,29 @@
 
 .grp-stat-val   { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: var(--trendy); }
 .grp-stat-label { font-size: 10.5px; color: var(--text-muted); margin-top: 2px; }
+```
+
+```html
+<div class="grp-tab-bar">
+  <button class="grp-tab-pill act">GRP-A · 봄 세트</button>
+  <button class="grp-tab-pill inact">GRP-B · 여름</button>
+  <button class="grp-tab-pill inact">GRP-C · 가을</button>
+</div>
+<div class="grp-stat-row">
+  <div class="grp-stat">
+    <p class="grp-stat-val">3</p>
+    <p class="grp-stat-label">포함 코드</p>
+  </div>
+  <div class="grp-stat">
+    <p class="grp-stat-val">18</p>
+    <p class="grp-stat-label">공유 횟수</p>
+  </div>
+  <!-- D-day 강조 통계 -->
+  <div class="grp-stat dday">
+    <p class="grp-stat-val">D-14</p>
+    <p class="grp-stat-label">만료까지</p>
+  </div>
+</div>
 ```
 
 ---
@@ -757,6 +944,45 @@
 .mycode-status.soldout-s { background: #fef2f2; color: #dc2626; }
 
 .mycode-price { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; margin-left: auto; }
+```
+
+```html
+<div class="mycode-main-tabs">
+  <button class="mycode-main-tab on">내 코드</button>
+  <button class="mycode-main-tab off">받은 코드</button>
+</div>
+<p class="mycode-section-label">활성 · 8개</p>
+<!-- 활성 코드 카드 -->
+<div class="mycode-card">
+  <div class="mycode-thumb">🔑</div>
+  <div style="flex: 1;">
+    <p class="mycode-title">봄 아크릴 키링</p>
+    <p class="mycode-meta">D-23 · 조회 18 · 구매 7</p>
+  </div>
+  <span class="mycode-status active-s">활성</span>
+  <span class="mycode-price">12,000원</span>
+</div>
+<p class="mycode-section-label">종료 · 4개</p>
+<!-- 종료 코드 카드 -->
+<div class="mycode-card" style="opacity: .7;">
+  <div class="mycode-thumb" style="opacity: .5;">🧣</div>
+  <div style="flex: 1;">
+    <p class="mycode-title">패브릭 포스터 소형</p>
+    <p class="mycode-meta">2026.03.31 종료 · 구매 14</p>
+  </div>
+  <span class="mycode-status ended-s">종료</span>
+  <span class="mycode-price" style="color: var(--text-muted);">18,000원</span>
+</div>
+<!-- 품절 코드 카드 -->
+<div class="mycode-card" style="opacity: .7;">
+  <div class="mycode-thumb" style="opacity: .5;">🎴</div>
+  <div style="flex: 1;">
+    <p class="mycode-title">한정판 포카 12종</p>
+    <p class="mycode-meta">2026.04.25 품절 · 구매 88</p>
+  </div>
+  <span class="mycode-status soldout-s">품절</span>
+  <span class="mycode-price" style="color: var(--text-muted);">22,000원</span>
+</div>
 ```
 
 ---

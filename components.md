@@ -46,6 +46,14 @@
 .btn-ghost:hover    { border-color: #aaa; color: #444; }
 ```
 
+```html
+<button class="btn-primary">주문하기</button>
+<button class="btn-sky">바로구매</button>
+<button class="btn-yellow">할인쿠폰</button>
+<button class="btn-outline">담아두기</button>
+<button class="btn-ghost">샘플신청</button>
+```
+
 ### 장바구니 영역 버튼
 
 실제 장바구니·주문 페이지에서 사용하는 버튼으로 `border-radius: 4px` 적용.
@@ -62,6 +70,13 @@
 .btn-order-cart:hover { background: #3a3f7a; }
 ```
 
+```html
+<button class="btn-delete">선택삭제</button>
+<button class="btn-multi">다중배송 신청하기</button>
+<button class="btn-share-cart">공유하기</button>
+<button class="btn-order-cart">주문하기</button>
+```
+
 ### 상품 상세 페이지 버튼
 
 높이 60px · border-radius 없음 (직각)
@@ -73,6 +88,12 @@
 
 .btn-make:hover { background: #4e58c2; }
 .btn-pdf:hover  { background: #b3b3b3; }
+```
+
+```html
+<button class="btn-basket">🛒</button>
+<button class="btn-pdf">PDF 업로드</button>
+<button class="btn-make">디자인 선택하기</button>
 ```
 
 ---
@@ -122,6 +143,13 @@
 }
 ```
 
+```html
+<div class="search-wrap">
+  <input class="search-input" type="text" placeholder="상품을 검색하세요">
+  <button class="search-btn">🔍</button>
+</div>
+```
+
 ---
 
 ## 입력 필드 (Field)
@@ -145,6 +173,10 @@
 .field-input::placeholder { color: var(--text-muted); }
 ```
 
+```html
+<input class="field-input" type="text" placeholder="내용을 입력하세요">
+```
+
 ---
 
 ## 카드
@@ -164,6 +196,12 @@
 .card-belief { background: var(--belief); }
 ```
 
+```html
+<div class="card">
+  <!-- 카드 내용 -->
+</div>
+```
+
 ### 상품 카드
 
 ```css
@@ -173,6 +211,17 @@
 .product-card-name { font-size: 13px; font-weight: 700; color: var(--stability); margin-bottom: 3px; }
 .product-card-desc { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
 .product-card-price { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 800; color: var(--trendy); }
+```
+
+```html
+<div class="product-card">
+  <div class="product-card-thumb"><!-- 상품 이미지 --></div>
+  <div class="product-card-body">
+    <div class="product-card-name">상품명</div>
+    <div class="product-card-desc">상품 설명</div>
+    <div class="product-card-price">6,400원~</div>
+  </div>
+</div>
 ```
 
 ---
@@ -204,6 +253,14 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 .memo-tag-quick   { background: #fff; color: var(--badge-hot); box-shadow: inset 0 0 0 2px var(--badge-hot); }
 ```
 
+```html
+<span class="memo-tag memo-tag-new">NEW</span>
+<span class="memo-tag memo-tag-hot">HOT</span>
+<span class="memo-tag memo-tag-season">SEASON</span>
+<span class="memo-tag memo-tag-consult">상담</span>
+<span class="memo-tag memo-tag-quick">빠른배송</span>
+```
+
 ### GNB 드롭다운 상품리스트 태그
 
 드롭다운 상품명 앞에 붙는 소형 태그. height 약 20px · border-radius 3px.
@@ -224,6 +281,12 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 .gnb-tag-upgrade { background: #ff7373; color: #fff; width: 22px; text-align: center; padding: 2px 0; }
 ```
 
+```html
+<span class="gnb-tag gnb-tag-hot">HOT</span>
+<span class="gnb-tag gnb-tag-new">NEW</span>
+<span class="gnb-tag gnb-tag-upgrade">UP</span>
+```
+
 ### 상품 목록 인라인 배지
 
 상품 카드·리스트에 붙는 배지. border-radius 3–4px.
@@ -241,6 +304,13 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 .badge-outline  { background: transparent; color: var(--trendy); border: 1px solid var(--trendy); }
 .badge-same-day { background: #e8f8f0; color: #1a8c4e; border-radius: 4px; }
 .badge-quick    { background: var(--friendly); color: var(--trendy); border-radius: 4px; }
+```
+
+```html
+<span class="badge badge-coupon">쿠폰</span>
+<span class="badge badge-outline">NEW</span>
+<span class="badge badge-same-day">당일출고</span>
+<span class="badge badge-quick">빠른배송</span>
 ```
 
 ---
@@ -343,6 +413,21 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 .social-btn-google { background: #fff; border: 1px solid #d9d9d9; }
 ```
 
+```html
+<div class="login-modal">
+  <div class="login-title">PUBLOG</div>
+  <input class="login-field" type="text" placeholder="아이디">
+  <input class="login-field" type="password" placeholder="비밀번호">
+  <button class="login-btn login-btn-primary">로그인</button>
+  <button class="login-btn login-btn-kakao">카카오로 시작하기</button>
+  <div style="display: flex; justify-content: center; gap: 8px;">
+    <button class="social-btn social-btn-naver"></button>
+    <button class="social-btn social-btn-apple"></button>
+    <button class="social-btn social-btn-google"></button>
+  </div>
+</div>
+```
+
 ---
 
 ## 채널 & SNS 카드
@@ -390,6 +475,21 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 }
 ```
 
+```html
+<div class="sns-grid">
+  <div class="sns-card">
+    <div class="sns-icon"><!-- 아이콘 이미지 --></div>
+    <div class="sns-name">KakaoTalk</div>
+    <div class="sns-url">pf.kakao.com/_xbxmxhzE</div>
+  </div>
+  <div class="sns-card">
+    <div class="sns-icon"><!-- 아이콘 이미지 --></div>
+    <div class="sns-name">Instagram</div>
+    <div class="sns-url">instagram.com/publog_official</div>
+  </div>
+</div>
+```
+
 ---
 
 ## 모바일 하단 네비게이션
@@ -432,6 +532,27 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 .mobile-nav-icon { width: 24px; height: 24px; }
 ```
 
+```html
+<nav class="mobile-nav">
+  <div class="mobile-nav-item active">
+    <img class="mobile-nav-icon" src="ico_home.png" alt="홈">
+    <span>홈</span>
+  </div>
+  <div class="mobile-nav-item">
+    <img class="mobile-nav-icon" src="ico_search.png" alt="검색">
+    <span>검색</span>
+  </div>
+  <div class="mobile-nav-item">
+    <img class="mobile-nav-icon" src="ico_cart.png" alt="장바구니">
+    <span>장바구니</span>
+  </div>
+  <div class="mobile-nav-item">
+    <img class="mobile-nav-icon" src="ico_my.png" alt="마이">
+    <span>마이</span>
+  </div>
+</nav>
+```
+
 ---
 
 ## Stat Card (통계 카드)
@@ -455,6 +576,18 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 /* 강조 변형 */
 .stat-card-accent { background: #eef2ff; }
 .stat-card-accent .stat-value { color: var(--attention); }
+```
+
+```html
+<div class="stat-card">
+  <div class="stat-value">8</div>
+  <div class="stat-label">공유한 코드</div>
+</div>
+<!-- D-day 강조 변형 -->
+<div class="stat-card stat-card-accent">
+  <div class="stat-value">D-14</div>
+  <div class="stat-label">만료까지</div>
+</div>
 ```
 
 ---
@@ -484,6 +617,12 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 .dday-safe    { background: var(--belief);          color: var(--text-muted); }
 .dday-warn    { background: var(--dday-warn-bg);    color: var(--dday-warn-tx); }
 .dday-urgent  { background: var(--dday-urgent-bg);  color: var(--dday-urgent-tx); }
+```
+
+```html
+<span class="dday-badge dday-urgent">D-2</span>
+<span class="dday-badge dday-warn">D-5</span>
+<span class="dday-badge dday-safe">D-14</span>
 ```
 
 ---
@@ -535,6 +674,16 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 }
 ```
 
+```html
+<div class="step-wrap">
+  <span class="step-label">STEP <em>1</em> / 3</span>
+  <div class="step-bar-track">
+    <div class="step-bar-fill" style="width: 33%;"></div>
+  </div>
+  <span class="step-name">상품 선택</span>
+</div>
+```
+
 ---
 
 ## Stepper (수량 조절)
@@ -567,4 +716,12 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
   min-width: 40px;
   text-align: center;
 }
+```
+
+```html
+<div class="stepper">
+  <button class="stepper-btn">−</button>
+  <span class="stepper-value">1</span>
+  <button class="stepper-btn">+</button>
+</div>
 ```
