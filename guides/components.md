@@ -85,7 +85,7 @@
 .btn-pdf    { height: 60px; padding: 0 32px; background: #999; color: #fff; border: none; font-size: 15px; font-weight: 700; cursor: pointer; }
 .btn-basket { height: 60px; width: 70px; background: #ccc; color: #fff; border: none; font-size: 12px; font-weight: 700; cursor: pointer; }
 
-.btn-make:hover { background: #4e58c2; }
+.btn-make:hover { background: var(--btn-make-hover); }
 .btn-pdf:hover  { background: #b3b3b3; }
 ```
 
@@ -312,6 +312,28 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
 <span class="badge badge-quick">빠른배송</span>
 ```
 
+### 상품 배지 (PRODUCT BADGES)
+
+상품 리스트·상세 페이지에 노출되는 원형 아이콘 배지. 한 상품에 최대 2개까지 조합 가능.
+
+| 배지명 | 이미지 URL |
+|--------|-----------|
+| KC 인증 | `https://www.publog.co.kr/gnb/new/l_kc_mark.png` |
+| 업계 최저가 | `https://stay10.publog.co.kr/gnb/new/l_low.png` |
+| 번개배송 | `https://stay10.publog.co.kr/gnb/new/l_quick.png` |
+| NEW DESIGN | `https://stay10.publog.co.kr/gnb/new/l_newdesign.png` |
+| 귀도리컷팅 | `https://stay10.publog.co.kr/gnb/new/cutr_icon.png` |
+| 대량구매 상담상품 | `https://stay10.publog.co.kr/gnb/new/l_designadvice_tag.png` |
+| 디자인 대행신청 | `https://stay10.publog.co.kr/gnb/new/l_designapply_tag.png` |
+| 2시 마감 당일출고 | `https://stay10.publog.co.kr/gnb/new/l_shipstoday_tag.png` |
+
+```html
+<div style="display: flex; gap: 4px;">
+  <img src="https://www.publog.co.kr/gnb/new/l_kc_mark.png" alt="KC인증" title="KC인증">
+  <img src="https://stay10.publog.co.kr/gnb/new/l_quick.png" alt="번개배송" title="번개배송">
+</div>
+```
+
 ---
 
 ## GNB 헤더 (PC)
@@ -353,7 +375,7 @@ GNB 메뉴 항목 옆에 붙는 작은 태그. height 22px · border-radius 30px
   width: 360px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 32px 64px -16px rgba(0,0,0,0.22);
+  box-shadow: 0 32px 64px -16px rgba(0,0,0,0.28);
   padding: 40px 32px 32px;
 }
 

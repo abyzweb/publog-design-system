@@ -987,6 +987,109 @@
 
 ---
 
+## PubSubLink (상단 탭 바)
+
+퍼블코드 프로토타입 상단 네이비 탭 바. 선택 상태에 따라 3가지 스타일로 분기.
+
+| 탭 유형 | 해당 화면 | 선택 시 스타일 |
+|--------|----------|--------------|
+| Navy | 마이 코드 · 그룹관리 · 마이코드 10+ | `background: var(--trendy)` · `border: 2px solid #fff` · `color: #fff` |
+| Purple | 그룹코드 만들기 · 대량 선택 · 그룹코드 종료 | `background: var(--attention)` · `color: #fff` |
+| Default | 퍼블코드 만들기 · 코드 등록 등 | `background: #fff` · `color: var(--trendy)` |
+| 비선택 (공통) | 모든 탭 | `color: rgba(255,255,255,0.75)` · hover `bg: rgba(255,255,255,0.1)` |
+
+```css
+.pubsublink-bar {
+  display: flex;
+  gap: 6px;
+  background: var(--trendy);
+  padding: 8px 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.pubsublink-btn {
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.75);
+  background: transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.pubsublink-btn:hover { background: rgba(255,255,255,0.1); }
+
+.pubsublink-btn.type-navy    { background: var(--trendy); border: 2px solid #fff; color: #fff; }
+.pubsublink-btn.type-purple  { background: var(--attention); color: #fff; }
+.pubsublink-btn.type-default { background: #fff; color: var(--trendy); }
+```
+
+```html
+<div class="pubsublink-bar">
+  <button class="pubsublink-btn type-navy">마이 코드</button>
+  <button class="pubsublink-btn type-purple">그룹코드 만들기</button>
+  <button class="pubsublink-btn type-default">퍼블코드 만들기</button>
+  <button class="pubsublink-btn">코드 등록</button>
+</div>
+```
+
+---
+
+## MyPublog LNB
+
+마이퍼블로그 사이드바 네비게이션. 너비 220px · PC 전용.
+
+```css
+.lnb-wrap { width: 220px; background: #fff; flex-shrink: 0; }
+
+.lnb-header { background: var(--trendy); padding: 16px 20px; color: #fff; }
+
+.lnb-section-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #777;
+  padding: 12px 20px 4px;
+}
+
+.lnb-item {
+  display: block;
+  font-size: 12.5px;
+  padding: 7px 20px;
+  color: var(--text-body);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.lnb-item:hover     { background: var(--belief); }
+.lnb-item.active    { color: var(--trendy); font-weight: 600; background: rgba(34,36,80,0.04); }
+.lnb-item.highlight { color: var(--attention); font-weight: 600; }
+```
+
+```html
+<nav class="lnb-wrap">
+  <div class="lnb-header">
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;">MY PUBLOG</p>
+  </div>
+  <p class="lnb-section-label">코드 관리</p>
+  <a class="lnb-item active">마이 코드</a>
+  <a class="lnb-item highlight">그룹관리</a>
+  <a class="lnb-item">코드 등록</a>
+  <p class="lnb-section-label">계정</p>
+  <a class="lnb-item">주문 내역</a>
+  <a class="lnb-item">설정</a>
+</nav>
+```
+
+---
+
 ## CSS 변수 추가 필요
 
 퍼블코드 컴포넌트에서 사용하는 추가 변수. 보일러플레이트 `:root`에 추가하세요:

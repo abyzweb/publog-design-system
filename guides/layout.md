@@ -75,16 +75,27 @@ FOOTER
   /* ── 텍스트 & 테두리 ── */
   --text-body:  #333333;
   --text-muted: #777777;
+  --text-light: #AAAAAA;
   --border:     #E4E5EC;
+
+  /* ── 그레이 스케일 ── */
+  --gray-text: #666666;
+  --gray-hint: #999999;
+  --gray-line: #CCCCCC;
 
   /* ── 배지 컬러 ── */
   --badge-new: #FF8F17;
   --badge-hot: #E5362C;
 
   /* ── 버튼 hover ── */
-  --trendy-hover:   #3a3f7a;
-  --sky-hover:      #0092c0;
-  --friendly-hover: #f0c000;
+  --trendy-hover:    #3a3f7a;
+  --sky-hover:       #0092c0;
+  --friendly-hover:  #f0c000;
+  --btn-make-hover:  #4e58c2;
+
+  /* ── 퍼블코드 ── */
+  --group-purple-soft: #ECEEFF;
+  --radius: 12px;
 
   /* ── D-day ── */
   --dday-warn-bg:    #FFF3CD;
