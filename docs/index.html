@@ -304,6 +304,7 @@ hr {
   padding: 28px 32px;
   margin-bottom: 12px;
 }
+.section-card + .section-txt { margin-top: 32px; }
 
 .flow-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
 
@@ -470,19 +471,6 @@ hr {
   margin-bottom: 6px;
 }
 
-.admin-section-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--stability);
-  margin-bottom: 12px;
-}
-
-.admin-section-txt {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
 /* 폴더 트리 */
 .folder-tree {
   font-family: 'JetBrains Mono', monospace;
@@ -576,10 +564,11 @@ hr {
   align-items: flex-start;
   gap: 8px;
   background: rgba(81,83,130,0.06);
-  border-left: 3px solid var(--attention);
-  border-radius: 0 8px 8px 0;
-  padding: 12px 16px;
+  border-radius: 8px;
+  padding: 30px;
 }
+* + .inline-help-demo { margin-top: 30px; }
+.inline-help-demo + * { margin-top: 30px; }
 
 .help-icon {
   width: 20px; height: 20px;
@@ -876,7 +865,8 @@ button.step-btn { background: none; border: none; padding: 0; cursor: pointer; w
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .card-label { font-size: 10px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; margin-bottom: 16px; text-transform: uppercase; }
 .divider { height: 1px; background: var(--border); margin: 24px 0; }
-code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
+code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
+.callout-card code { background: #fff; }
 .chip { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 5px; border: 1px solid rgba(0,0,0,0.08); }
 
 /* ── 시작 전 확인 카드 ── */
@@ -884,6 +874,22 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
   display: grid;
   gap: 12px;
 }
+.nav-jump-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.nav-jump-card {
+  background: var(--clear);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  cursor: pointer;
+  transition: background .15s;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+}
+.nav-jump-card:hover { background: var(--belief); }
+.nav-jump-card-icon { margin-bottom: 20px; }
+.nav-jump-card-title { font-size: 16px; font-weight: 700; color: var(--stability); margin-bottom: 6px; }
+.nav-jump-card-desc { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
 
 .check-card {
   background: var(--clear);
@@ -916,6 +922,29 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+.callout-card {
+  background: linear-gradient(135deg, rgba(34,36,80,0.05), rgba(34,36,80,0.02));
+  border-radius: var(--radius);
+  border: 1px solid rgba(34,36,80,0.08);
+  padding: 28px 32px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.callout-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--trendy);
+  margin-bottom: 10px;
+  letter-spacing: -.02em;
+}
+
+.callout-card-desc {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.8;
 }
 
 .btn-primary, .btn-sky, .btn-yellow, .btn-outline, .btn-ghost {
@@ -985,7 +1014,7 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
       <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
     <div class="nav-items">
-      <div class="nav-sub" onclick="showPage('s01')">가이드 소개</div>
+      <div class="nav-sub" onclick="showPage('s01')">가이드 안내</div>
       <div class="nav-sub" onclick="showPage('s02')">클로드 앱으로 시작하기</div>
       <div class="nav-sub" onclick="showPage('s03')">클로드 디자인으로 시작하기</div>
     </div>
@@ -1019,7 +1048,7 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
       <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
     <div class="nav-items">
-      <div class="nav-sub" onclick="showPage('a01')">가이드 소개</div>
+      <div class="nav-sub" onclick="showPage('a01')">가이드 안내</div>
     </div>
 
     <div class="nav-divider"></div>
@@ -1029,10 +1058,8 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
       <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
     <div class="nav-items">
-      <div class="nav-sub" onclick="showPage('a03')">NAS·GitHub 경로 및 폴더 구조</div>
-      <div class="nav-sub" onclick="showPage('a04')">스킬 수정 시 GitHub 업로드 방법</div>
-      <div class="nav-sub" onclick="showPage('a05')">클로드 코드 업로드 방법</div>
-      <div class="nav-sub" onclick="showPage('a06')">클로드 디자인 업로드 방법</div>
+      <div class="nav-sub" onclick="showPage('am1')">클로드 코드로 작업하기</div>
+      <div class="nav-sub" onclick="showPage('am2')">외부 도구 업데이트</div>
     </div>
   </div>
 
@@ -1052,87 +1079,39 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
     <!-- ─── 사용자 · 시작하기 ─── -->
     <div class="page" id="page-s01">
       <div class="section-header">
-        <h1 class="page-title">가이드 소개</h1>
-        <div class="section-txt">이 페이지는 AI에 첨부하는 파일이 아니에요.<br>퍼블로그 브랜드 컬러·폰트·컴포넌트 규칙을 눈으로 확인하는 시각적 레퍼런스예요.<br>클로드 앱과 클로드 디자인중 선택하여 사용할 수 있어요.</div>
+        <h1 class="page-title">가이드 안내</h1>
+        <div class="section-txt">퍼블로그 디자인 시스템의 시각적 레퍼런스 페이지예요. AI가 아닌 사용자가 직접 확인하는 용도예요.<br>디자인 시스템은 클로드 툴을 통해 사용할 수 있어요.</div>
       </div>
       <hr>
 
-      <!-- 사용자 사용 흐름 -->
-      <h2 class="section-title">사용자 사용 흐름</h2>
-      <div class="section-card">
-        <div class="flow-row flow-row--yellow">
-          <div class="flow-row-header">
-            <div class="flow-row-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="17" height="17" style="fill:#fff;flex-shrink:0"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"></path></svg>
-              클로드 앱
-            </div>
+      <!-- 바로가기 카드 -->
+      <div class="nav-jump-cards">
+        <div class="nav-jump-card" onclick="showPage('s02')">
+          <div class="nav-jump-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40" style="fill:#D4784A"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"></path></svg>
           </div>
-          <div class="flow-steps">
-            <div class="flow-step">
-              <div class="flow-step-text">스킬 시작</div>
-              <div class="flow-step-desc">claude.ai에서 새 대화 후<br />스킬 활성화</div>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-step">
-              <div class="flow-step-text">HTML 생성·수정</div>
-              <div class="flow-step-desc">채팅으로 원하는 페이지를<br />디자인해요</div>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-step last">
-              <div class="flow-step-text">HTML 다운 · 웹팀 전달</div>
-              <div class="flow-step-desc">완성된 HTML을<br />노션에 업로드해요</div>
-            </div>
+          <div class="nav-jump-card-title">클로드 앱으로 시작하기</div>
+          <div class="nav-jump-card-desc">claude.ai에서 스킬을 활성화해 HTML을 생성해요</div>
+        </div>
+        <div class="nav-jump-card" onclick="showPage('s03')">
+          <div class="nav-jump-card-icon">
+            <svg width="40" height="40" viewBox="0 0 20 21" fill="none"><path d="M9.99902 0C15.5258 0.000170936 19.999 4.50643 19.999 10.0547C19.999 11.7656 19.5863 12.9976 18.7861 13.8203C17.9924 14.6362 16.9465 14.9138 15.9854 15.0078C15.05 15.0993 14.0097 15.0262 13.2549 15.0186C12.8524 15.0145 12.5177 15.0267 12.2441 15.0703C11.9682 15.1144 11.8143 15.1813 11.7305 15.2432C11.4745 15.4322 11.3353 15.7121 11.2656 16.1602C11.2303 16.3875 11.2168 16.6362 11.209 16.9131C11.2017 17.1715 11.1986 17.4893 11.1807 17.7705C11.1469 18.2975 11.0495 19.0865 10.4199 19.5908C9.7846 20.0996 8.88652 20.1057 7.85449 19.877C7.36399 19.7682 6.88652 19.6232 6.42578 19.4453C2.66989 17.9949 0.000187748 14.3414 0 10.0547C0 4.50643 4.47223 0.000171048 9.99902 0ZM9.99902 1.60547C5.36781 1.60564 1.60547 5.38391 1.60547 10.0547C1.60566 13.6582 3.84823 16.7296 7.00391 17.9482C7.39027 18.0974 7.79085 18.2184 8.20215 18.3096C9.1375 18.5169 9.384 18.3633 9.41602 18.3379C9.4524 18.3087 9.54558 18.1915 9.5791 17.668C9.5947 17.4239 9.59473 17.1786 9.60352 16.8672C9.61179 16.5742 9.62831 16.2435 9.67969 15.9131C9.78359 15.2455 10.0474 14.4906 10.7764 13.9521C11.1479 13.6778 11.5842 13.5493 11.9912 13.4844C12.4007 13.4191 12.8434 13.4088 13.2705 13.4131C14.1753 13.4222 15.0071 13.4905 15.8291 13.4102C16.6257 13.3322 17.2249 13.1235 17.6357 12.7012C18.0401 12.2855 18.3935 11.5261 18.3936 10.0547C18.3936 5.38391 14.6302 1.60564 9.99902 1.60547ZM5.11621 9.86719C5.86386 9.91468 6.45486 10.5348 6.45508 11.2939C6.45506 12.0838 5.81519 12.7245 5.02539 12.7246C4.28481 12.7246 3.67573 12.1617 3.60254 11.4404L3.59473 11.2939L3.60156 11.1533C3.66942 10.4596 4.23282 9.91186 4.93359 9.86719H5.11621ZM14.9814 7.19141C15.729 7.23889 16.3199 7.85919 16.3203 8.61816C16.3203 9.40801 15.6804 10.0487 14.8906 10.0488C14.1501 10.0487 13.5409 9.48586 13.4678 8.76465L13.46 8.61816L13.4668 8.47754C13.5348 7.78403 14.0983 7.23618 14.7988 7.19141H14.9814ZM6.4541 4.93457C7.20161 4.9822 7.79275 5.60231 7.79297 6.36133C7.79288 7.151 7.15291 7.7917 6.36328 7.79199C5.62274 7.79199 5.01369 7.22903 4.94043 6.50781L4.93262 6.36133L4.93945 6.2207C5.00731 5.52698 5.5707 4.97922 6.27148 4.93457H6.4541ZM11.3867 3.59668C12.1343 3.64419 12.7253 4.26436 12.7256 5.02344C12.7256 5.81326 12.0857 6.45393 11.2959 6.4541C10.5553 6.4541 9.94622 5.89123 9.87305 5.16992L9.86523 5.02344L9.87207 4.88281C9.93996 4.18912 10.5033 3.64133 11.2041 3.59668H11.3867Z" fill="#D4784A"></path></svg>
           </div>
+          <div class="nav-jump-card-title">클로드 디자인으로 시작하기</div>
+          <div class="nav-jump-card-desc">claude.ai/design에서 디자인 시스템을 선택해 작업해요</div>
         </div>
       </div>
-      <div class="section-card">
-        <div class="flow-row">
-          <div class="flow-row-header">
-            <div class="flow-row-title">
-              <svg width="17" height="17" viewBox="0 0 20 21" fill="none" style="flex-shrink:0"><path d="M9.99902 0C15.5258 0.000170936 19.999 4.50643 19.999 10.0547C19.999 11.7656 19.5863 12.9976 18.7861 13.8203C17.9924 14.6362 16.9465 14.9138 15.9854 15.0078C15.05 15.0993 14.0097 15.0262 13.2549 15.0186C12.8524 15.0145 12.5177 15.0267 12.2441 15.0703C11.9682 15.1144 11.8143 15.1813 11.7305 15.2432C11.4745 15.4322 11.3353 15.7121 11.2656 16.1602C11.2303 16.3875 11.2168 16.6362 11.209 16.9131C11.2017 17.1715 11.1986 17.4893 11.1807 17.7705C11.1469 18.2975 11.0495 19.0865 10.4199 19.5908C9.7846 20.0996 8.88652 20.1057 7.85449 19.877C7.36399 19.7682 6.88652 19.6232 6.42578 19.4453C2.66989 17.9949 0.000187748 14.3414 0 10.0547C0 4.50643 4.47223 0.000171048 9.99902 0ZM9.99902 1.60547C5.36781 1.60564 1.60547 5.38391 1.60547 10.0547C1.60566 13.6582 3.84823 16.7296 7.00391 17.9482C7.39027 18.0974 7.79085 18.2184 8.20215 18.3096C9.1375 18.5169 9.384 18.3633 9.41602 18.3379C9.4524 18.3087 9.54558 18.1915 9.5791 17.668C9.5947 17.4239 9.59473 17.1786 9.60352 16.8672C9.61179 16.5742 9.62831 16.2435 9.67969 15.9131C9.78359 15.2455 10.0474 14.4906 10.7764 13.9521C11.1479 13.6778 11.5842 13.5493 11.9912 13.4844C12.4007 13.4191 12.8434 13.4088 13.2705 13.4131C14.1753 13.4222 15.0071 13.4905 15.8291 13.4102C16.6257 13.3322 17.2249 13.1235 17.6357 12.7012C18.0401 12.2855 18.3935 11.5261 18.3936 10.0547C18.3936 5.38391 14.6302 1.60564 9.99902 1.60547ZM5.11621 9.86719C5.86386 9.91468 6.45486 10.5348 6.45508 11.2939C6.45506 12.0838 5.81519 12.7245 5.02539 12.7246C4.28481 12.7246 3.67573 12.1617 3.60254 11.4404L3.59473 11.2939L3.60156 11.1533C3.66942 10.4596 4.23282 9.91186 4.93359 9.86719H5.11621ZM14.9814 7.19141C15.729 7.23889 16.3199 7.85919 16.3203 8.61816C16.3203 9.40801 15.6804 10.0487 14.8906 10.0488C14.1501 10.0487 13.5409 9.48586 13.4678 8.76465L13.46 8.61816L13.4668 8.47754C13.5348 7.78403 14.0983 7.23618 14.7988 7.19141H14.9814ZM6.4541 4.93457C7.20161 4.9822 7.79275 5.60231 7.79297 6.36133C7.79288 7.151 7.15291 7.7917 6.36328 7.79199C5.62274 7.79199 5.01369 7.22903 4.94043 6.50781L4.93262 6.36133L4.93945 6.2207C5.00731 5.52698 5.5707 4.97922 6.27148 4.93457H6.4541ZM11.3867 3.59668C12.1343 3.64419 12.7253 4.26436 12.7256 5.02344C12.7256 5.81326 12.0857 6.45393 11.2959 6.4541C10.5553 6.4541 9.94622 5.89123 9.87305 5.16992L9.86523 5.02344L9.87207 4.88281C9.93996 4.18912 10.5033 3.64133 11.2041 3.59668H11.3867Z" fill="#fff"></path></svg>
-              클로드 디자인
-            </div>
-          </div>
-          <div class="flow-steps">
-            <div class="flow-step">
-              <div class="flow-step-text">디자인 시스템 선택</div>
-              <div class="flow-step-desc">퍼블로그 디자인 시스템(표준)<br />을 선택해요</div>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-step">
-              <div class="flow-step-text">HTML 생성·수정</div>
-              <div class="flow-step-desc">채팅으로 원하는 페이지를<br />디자인해요</div>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-step last">
-              <div class="flow-step-text">HTML 다운 · 웹팀 전달</div>
-              <div class="flow-step-desc">완성된 HTML을<br />노션에 업로드해요</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <hr>
 
       <!-- 이렇게 사용해주세요 -->
       <h2 class="section-title">이렇게 사용해주세요</h2>
       <div class="check-cards">
         <div class="check-card">
           <div class="check-card-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#222450" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <div>
-            <div class="check-card-title">AI가 스타일을 임의 생성할 수 있어요</div>
-            <div class="check-card-desc">가이드에 없는 스타일은 AI가 자동 생성해요. 작업 후 웹팀 검수를 요청하세요.</div>
-          </div>
-        </div>
-        <div class="check-card">
-          <div class="check-card-icon">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#222450" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
           <div>
-            <div class="check-card-title">검수는 이렇게 요청해요</div>
-            <div class="check-card-desc">작업 완료 후 HTML을 노션 양식으로 웹팀에 검수 요청해 주세요.</div>
+            <div class="check-card-title">완성 후 웹팀에 검수를 요청해주세요</div>
+            <div class="check-card-desc">AI는 가이드를 항상 완벽하게 따르지 않아요. 가이드에 없는 요소는 임의로 생성하기도 해요. <br />작업이 끝나면 노션 양식으로 웹팀에 검수 요청해 주세요.</div>
           </div>
         </div>
         <div class="check-card">
@@ -1140,34 +1119,20 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#222450" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div>
-            <div class="check-card-title">세션을 최적화해 관리해주세요</div>
-            <div class="check-card-desc">세션이 길어지면 HTML을 저장하고, 새 세션에 파일을 첨부해 이어 작업하세요.</div>
+            <div class="check-card-title">대화창(세션)을 최적화해 관리해주세요</div>
+            <div class="check-card-desc">대화가 길어지면 Claude가 이전 내용을 자동으로 압축(컴팩트)해요.<br />이 과정에서 작업 내용이 소실되거나 가이드 참조가 약해질 수 있어요.<br /> 대화창에 내용이 길어지면 HTML을 내 컴퓨터에 저장해두고, 새 대화창에 파일을 첨부해 이어 작업하세요.</div>
           </div>
         </div>
       </div>
-      
 
     </div>
 
     <div class="page" id="page-s02">
       <div class="section-header">
         <h1 class="page-title">클로드 앱으로 시작하기</h1>
-        <div class="section-txt">클로드 앱 스킬을 사용해 퍼블로그 스타일 HTML을 만드는 방법이에요.</div>
+        <div class="section-txt">클로드 앱 스킬을 사용해 퍼블로그 스타일 HTML을 만드는 방법이에요. Chat 또는 Cowork 모두 사용 가능해요.</div>
       </div>
       <hr>
-
-      <h2 class="section-title">시작 전 확인</h2>
-      <div class="check-cards">
-        <div class="check-card">
-          <div class="check-card-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#222450" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div>
-            <div class="check-card-title">클로드 앱에서 새 대화를 시작하세요</div>
-            <div class="check-card-desc">Chat 또는 Cowork 모두 사용 가능해요.</div>
-          </div>
-        </div>
-      </div>
 
       <h2 class="section-title">사용 방법</h2>
       <div class="section-card">
@@ -1234,26 +1199,20 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
       </div>
       <hr>
 
-      <h2 class="section-title">시작 전 확인</h2>
-      <div class="check-cards">
-        <div class="check-card">
-          <div class="check-card-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#222450" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="check-card-title">클로드 디자인에 접속하세요</div>
-            <div class="check-card-desc">브라우저에서 <a class="en" href="https://claude.ai/design" target="_blank" style="color: var(--attention); text-decoration: underline;">claude.ai/design</a> 에 접속해요.</div>
-          </div>
-        </div>
-      </div>
-
       <h2 class="section-title">사용 방법</h2>
       <div class="section-card">
         <div class="step-list">
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">1</div>
-              <div class="step-title">디자인 시스템 선택창에서 "퍼블로그 디자인 시스템(표준)" 선택</div>
+              <div class="step-title">클로드 디자인 접속</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">디자인 시스템 선택창에서 "Publog Design System(퍼블로그 표준)" 선택하여 시작</div>
+              <a class="step-btn" href="https://claude.ai/design" target="_blank">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                클로드 디자인 바로가기
+              </a>
             </div>
           </div>
           <div class="step-item">
@@ -1265,13 +1224,13 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">3</div>
-              <div class="step-title">완성 후 HTML 다운로드</div>
+              <div class="step-title">완성 후 HTML 내 컴퓨터에 다운로드</div>
             </div>
           </div>
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge step-badge-final">4</div>
-              <div class="step-title">노션에 업로드 → 웹팀에 수정 요청</div>
+              <div class="step-title">노션에서 웹팀에 수정 요청</div>
             </div>
             <div class="step-extra">
               <a class="step-btn" href="https://www.notion.so/c68837e8a33543a6911613a8af68cc42?v=e72ca864e1bc4f65ba140f6cecfbadaa" target="_blank">
@@ -1443,10 +1402,11 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
     <!-- ─── 관리자 · 시작하기 ─── -->
     <div class="page" id="page-a01">
       <div class="section-header">
-        <h1 class="page-title">가이드 소개</h1>
-        <div class="section-txt">퍼블로그 웹 디자인 표준화 시스템을 관리하는 담당자를 위한 설명이에요.<br>스킬 파일과 가이드를 어떻게 구성하고 업데이트하는지 안내해요.</div>
+        <h1 class="page-title">가이드 안내</h1>
+        <div class="section-txt">퍼블로그 웹 디자인 표준화 시스템을 관리하는 담당자를 위한 설명이에요.</div>
       </div>
       <hr>
+
       <h2 class="section-title">관리자 작업 흐름</h2>
       <div class="section-card">
         <div class="step-list">
@@ -1465,22 +1425,28 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">2</div>
-              <div class="step-title">HTML 파일 스타일 검토 / 컴포넌트 추가·수정</div>
+              <div class="step-title">클로드 코드로 작업하기</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">프로젝트 공유 폴더에서 HTML 파일 스타일 검토 / 컴포넌트 추가·수정</div>
             </div>
             <div class="step-extra">
               <button class="step-btn" onclick="copyNasPath(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                나스 경로 복사
+                프로젝트 경로 복사
               </button>
             </div>
           </div>
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">3</div>
-              <div class="step-title">수정된 디자인 시스템 md 파일 GitHub에 업로드</div>
+              <div class="step-title">수정 파일 GitHub에 업로드</div>
             </div>
             <div class="step-extra">
-              <a class="step-btn" href="https://github.com/abyzweb/publog-design-guides" target="_blank">
+              <div class="step-desc">수정된 디자인 시스템과 가이드 페이지를 클라우드에 업로드</div>
+            </div>
+            <div class="step-extra">
+              <a class="step-btn" href="https://github.com/abyzweb/publog-design-system" target="_blank">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 GitHub 바로가기
               </a>
@@ -1491,11 +1457,17 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
               <div class="step-badge">4</div>
               <div class="step-title">클로드 앱에서 스킬 업데이트</div>
             </div>
+            <div class="step-extra">
+              <div class="step-desc">SKILL.md 변경 시에만 필요해요.</div>
+            </div>
           </div>
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">5</div>
               <div class="step-title">클로드 디자인에서 디자인 시스템 업데이트</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">guides/*.md 와 SKILL.md 변경 시 업데이트 필요해요.</div>
             </div>
             <div class="step-extra">
               <a class="step-btn" href="https://claude.ai/design" target="_blank">
@@ -1506,61 +1478,190 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
           </div>
           <div class="step-item">
             <div class="step-start">
-              <div class="step-badge">6</div>
-              <div class="step-title">디자인 가이드 페이지 업데이트</div>
+              <div class="step-badge step-badge-final">6</div>
+              <div class="step-title">노션에서 "작업 완료" 처리</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">지금 보고 있는 이 가이드예요.</div>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-start">
-              <div class="step-badge step-badge-final">7</div>
-              <div class="step-title">노션에서 "작업 완료" 처리</div>
+              <div class="step-desc">요청자에게 완료 내역 공유하기</div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="callout-card">
+        <div class="callout-card-title">GitHub가 뭐예요?</div>
+        <div class="callout-card-desc">파일을 인터넷에 저장·배포하는 클라우드 저장소예요.<br /> Claude가 이 저장소에서 디자인 가이드를 자동으로 불러와 항상 최신 상태를 유지해요.<br />연동은 이미 완료되어 있어서 별도 세팅 없이 파일 수정 후 Claude Code에 작업을 맡기면 자동으로 처리돼요.</div>
+      </div>
+
     </div>
 
     <!-- ─── 관리자 · 관리 방법 ─── -->
-    <div class="page" id="page-a03">
+
+    <!-- am1: 클로드 코드로 작업하기 -->
+    <div class="page" id="page-am1">
       <div class="section-header">
-        <h1 class="page-title">NAS·GitHub 경로 및 폴더 구조</h1>
+        <h1 class="page-title">클로드 코드로 작업하기</h1>
       </div>
       <hr>
-      <div class="section-card">
-        <p class="placeholder-note">콘텐츠를 준비 중이에요.</p>
+
+      <div class="callout-card">
+        <div class="callout-card-title">처음이라면 이렇게 시작하세요</div>
+        <div class="callout-card-desc" style="margin-bottom:14px">클로드 코드로 프로젝트가 자동화되어 있어요. 관리자는 AI가 안내하는 흐름에 따라 작업하면 돼요.<br>VS Code를 프로젝트 경로에 연결하고 채팅창에 <code>새 작업</code>이라고 입력해보세요.</div>
+        <button class="step-btn" onclick="copyNasPath(this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          프로젝트 경로 복사
+        </button>
       </div>
+
+      <h2 class="section-title">주요 작업 명령어</h2>
+      <div class="section-txt">디자인 변경은 명령어 없이 바로 말하면 돼요. 예: "배너 추가해줘", "버튼 색상 바꿔줘"</div>
+      <div class="section-card">
+        <table class="spec-table">
+          <colgroup><col style="width:120px"><col></colgroup>
+          <thead>
+            <tr><th>명령어</th><th>설명</th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="white-space:nowrap"><code>새 작업</code></td><td>노션 확인 → received/ 파일 준비 → 검수 → 수정까지 단계별 안내해요.<br />GitHub 업로드·로그·노션 완료는 마무리 단계에서 자동 처리돼요.</td></tr>
+            <tr><td style="white-space:nowrap"><code>이어서</code></td><td>LOG.md 마지막 항목과 노션 미완료 항목을 확인해 이전 작업을 어느 단계부터 재개할지 안내해줘요.</td></tr>
+            <tr><td style="white-space:nowrap"><code>백업해줘</code></td><td>버전 확정 + zip + 가이드 페이지 스냅샷을 backup/ 폴더에 저장해요.</td></tr>
+            <tr><td style="white-space:nowrap"><code>로그 저장</code></td><td>대화를 중간에 끊을 때 작업 내용을 LOG.md에 바로 기록해요.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-card">
+        <div class="callout-card-title">로그 저장을 잊지 마세요</div>
+        <div class="callout-card-desc">클로드 코드에서 대화가 가득 차면 이전 내용이 자동 압축(compact)되면서 작업 맥락을 잃을 수 있어요.<br />세션이 끝나기 전에 반드시 <code>로그 저장</code>을 실행해주세요.<br />LOG.md에 기록이 남으면 다른 관리자도 새 세션에서 <code>이어서</code>로 작업을 이어받을 수 있어요.</div>
+      </div>
+
+      <h2 class="section-title">프로젝트 폴더 구조(Nas)</h2>
+      <div class="section-card">
+        <pre class="folder-tree"><span class="dir">07_design_system/publog/</span>
+├── <span class="dir">CLAUDE.md</span>                        <span class="comment">← Claude 자동 읽기 (브랜드 규칙 설정)</span>
+├── LOG.md                           <span class="comment">← 작업 이력 기록</span>
+│
+├── <span class="dir">publog-design-system-skill/</span>      <span class="comment">← 스킬 원본 파일</span>
+│   ├── SKILL.md
+│   └── <span class="dir">guides/</span>
+│       ├── colors.md
+│       ├── typography.md
+│       ├── layout.md
+│       ├── components.md
+│       └── publog-code.md
+│
+├── <span class="dir">publog-design-system-html/</span>       <span class="comment">← 가이드 HTML (지금 이 파일)</span>
+│   └── index.html
+│
+├── <span class="dir">publog-github-repo/</span>              <span class="comment">← GitHub 동기화용 (직접 수정 금지)</span>
+│   ├── guides/
+│   └── docs/index.html
+│
+├── <span class="dir">received/</span>                        <span class="comment">← 사용자에게 받은 HTML 파일 보관</span>
+│
+├── <span class="dir">backup/</span>                          <span class="comment">← 버전별 백업 보관</span>
+│   ├── publog-design-system-skill/
+│   └── publog-design-system-html/
+│
+└── <span class="dir">source/</span>                          <span class="comment">← 원본 브랜드 가이드 (수정 금지)</span>
+    ├── brand_guideline_v4.md
+    └── ...</pre>
+      </div>
+
+      <h2 class="section-title">GitHub 저장소 구조</h2>
+      <div class="section-card">
+        <pre class="folder-tree"><span class="dir">abyzweb/publog-design-system</span> <span class="comment">(Public)</span>
+├── <span class="dir">guides/</span>                <span class="comment">← 스킬 가이드 파일 (Claude가 WebFetch로 읽음)</span>
+│   ├── colors.md
+│   ├── typography.md
+│   ├── layout.md
+│   ├── components.md
+│   └── publog-code.md
+└── <span class="dir">docs/</span>
+    └── index.html         <span class="comment">← GitHub Pages (지금 보고 있는 이 가이드 페이지)</span></pre>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+          <a class="step-btn" href="https://github.com/abyzweb/publog-design-system" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            GitHub 저장소 바로가기
+          </a>
+          <a class="step-btn" href="https://abyzweb.github.io/publog-design-system/" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            GitHub Pages (가이드 웹페이지)
+          </a>
+        </div>
+      </div>
+
     </div>
 
-    <div class="page" id="page-a04">
+    <!-- am2: 외부 도구 업데이트 -->
+    <div class="page" id="page-am2">
       <div class="section-header">
-        <h1 class="page-title">스킬 수정 시 GitHub 업로드 방법</h1>
+        <h1 class="page-title">외부 도구 업데이트</h1>
+        <div class="section-txt">SKILL.md가 변경된 경우에만 필요한 작업이에요.<br>Claude 앱과 claude.ai/design에 직접 파일 업로드해서 최신 상태로 유지해요.</div>
       </div>
       <hr>
-      <div class="section-card">
-        <p class="placeholder-note">콘텐츠를 준비 중이에요.</p>
-      </div>
-    </div>
 
-    <div class="page" id="page-a05">
-      <div class="section-header">
-        <h1 class="page-title">클로드 코드 업로드 방법</h1>
-      </div>
-      <hr>
+      <h2 class="section-title">클로드 앱 스킬 업데이트</h2>
       <div class="section-card">
-        <p class="placeholder-note">콘텐츠를 준비 중이에요.</p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge">1</div>
+              <div class="step-title">Claude Code에서 "백업해줘" 입력</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">버전 확정 후 <code>backup/publog-design-system-skill/</code>에 최신 zip이 생성돼요.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge step-badge-final">2</div>
+              <div class="step-title">Claude 앱에서 zip 업로드</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">Claude 앱 접속 → 채팅창 좌측 상단 [Customize] → Skills →<br /> 기존 publog-design-system 스킬 클릭 → 우측 상단 '점 세개' 아이콘 → 교체 → 최신 zip 업로드</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="page" id="page-a06">
-      <div class="section-header">
-        <h1 class="page-title">클로드 디자인 업로드 방법</h1>
-      </div>
-      <hr>
+      <h2 class="section-title">클로드 디자인 업데이트</h2>
       <div class="section-card">
-        <p class="placeholder-note">콘텐츠를 준비 중이에요.</p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge">1</div>
+              <div class="step-title">claude.ai/design 접속</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">디자인 시스템 진입 → "Publog Design System(퍼블로그 표준)"의 우측 화살표 아이콘 클릭</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge">2</div>
+              <div class="step-title">최신 파일 업로드·교체</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">채팅창에 최신 버전 원본 파일 <code>publog-design-system-skill/</code> 추가하여 자연어로 업데이트 요청</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge step-badge-final">3</div>
+              <div class="step-title">업데이트 후 동작 확인</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">메인에서 디자인 시스템 "Publog Design System(퍼블로그 표준)" 선택 후 업데이트 된 내용이 반영되었는지 확인</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <a class="step-btn" href="https://claude.ai/design" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            클로드 디자인 바로가기
+          </a>
+        </div>
       </div>
     </div>
 
@@ -1569,13 +1670,12 @@ code { background: #eef0f6; color: var(--attention); font-size: 11px; padding: 2
 
 <script>
 const pageMap = {
-  's01': '가이드 소개', 's02': '클로드 앱으로 시작하기',
+  's01': '가이드 안내', 's02': '클로드 앱으로 시작하기',
   's03': '클로드 디자인으로 시작하기',
   'color': '컬러 시스템', 'test': 'test',
   'pubcode': '퍼블코드',
-  'a01': '가이드 소개',
-  'a03': 'NAS·GitHub 경로 및 폴더 구조', 'a04': '스킬 수정 시 GitHub 업로드 방법',
-  'a05': '클로드 코드 업로드 방법', 'a06': '클로드 디자인 업로드 방법'
+  'a01': '가이드 안내',
+  'am1': '클로드 코드로 작업하기', 'am2': '외부 도구 업데이트'
 };
 
 let currentPage = 's01';
