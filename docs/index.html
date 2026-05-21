@@ -863,7 +863,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 .pc-guide .grp-items-row { display:flex; gap:8px; padding:16px 20px; overflow-x:auto; scrollbar-width:none; }
 .pc-guide .grp-tile { flex-shrink:0; display:flex; flex-direction:column; align-items:center; width:64px; gap:6px; }
 .pc-guide .grp-thumb { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:24px; position:relative; }
-.pc-guide .grp-thumb.active-t  { background:var(--group-purple-soft); }
+.pc-guide .grp-thumb.active-t  { background:var(--belief); }
 .pc-guide .grp-thumb.soldout-t { background:rgba(0,0,0,0.08); opacity:0.6; }
 .pc-guide .grp-so-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.52); border-radius:16px; display:flex; align-items:center; justify-content:center; }
 .pc-guide .grp-so-text { color:#fff; font-weight:900; font-size:7px; text-align:center; }
@@ -1429,29 +1429,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         </table>
       </div>
 
-      <h2 class="section-title">SubTab 버튼</h2>
-      <div class="section-txt">퍼블코드 내 탭 전환 UI. 알약형(border-radius 9999px) · height 44px</div>
-      <div class="section-card">
-        <div class="card-label">Preview</div>
-        <div class="pc-guide" style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-          <button class="subtab-btn subtab-active">퍼블코드 <span class="subtab-count">5</span></button>
-          <button class="subtab-btn subtab-inactive">그룹코드 <span class="subtab-count">3</span></button>
-          <span style="display:inline-flex; align-items:center; padding:0 12px; font-size:11px; color:var(--text-muted);">그룹코드 선택 시 →</span>
-          <button class="subtab-btn subtab-inactive">퍼블코드</button>
-          <button class="subtab-btn subtab-purple">그룹코드 <span class="subtab-count">3</span></button>
-        </div>
-        <div class="divider"></div>
-        <div class="card-label">Spec</div>
-        <table class="spec-table">
-          <thead><tr><th>상태</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
-          <tbody>
-            <tr><td>활성</td><td><code>.subtab-active</code></td><td>var(--trendy) #222450</td><td>#fff</td></tr>
-            <tr><td>비활성</td><td><code>.subtab-inactive</code></td><td>#fff</td><td>var(--text-muted)</td></tr>
-            <tr><td>퍼플 강조</td><td><code>.subtab-purple</code></td><td>#ECEEFF</td><td>#515382</td></tr>
-          </tbody>
-        </table>
-      </div>
-
       <h2 class="section-title">Field (폼 필드)</h2>
       <div class="section-txt">라벨 + 입력창 + 힌트 텍스트를 묶는 폼 필드 래퍼</div>
       <div class="section-card">
@@ -1481,64 +1458,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         </table>
       </div>
 
-      <h2 class="section-title">InlineHelp (인라인 도움말)</h2>
-      <div class="section-txt">? 버튼 클릭 시 해당 기능 설명을 팝업으로 보여주는 도움말 컴포넌트</div>
-      <div class="section-card">
-        <div class="card-label">Preview</div>
-        <div class="pc-guide" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="inlinehelp-btn">
-            <span class="inlinehelp-icon">?</span> 퍼블코드란?
-          </button>
-          <button class="inlinehelp-btn" style="border-color:rgba(81,83,130,0.3); color:#515382;">
-            <span class="inlinehelp-icon" style="background:rgba(81,83,130,0.12); color:#515382;">?</span> 그룹코드란?
-          </button>
-        </div>
-        <div class="divider"></div>
-        <div class="card-label">Spec</div>
-        <table class="spec-table">
-          <thead><tr><th>상태</th><th>배경</th><th>테두리</th><th>높이 / 반지름</th></tr></thead>
-          <tbody>
-            <tr><td>기본 (닫힘)</td><td>#FFFFFF</td><td>rgba(0,0,0,0.15)</td><td>36px / 9999px</td></tr>
-            <tr><td>열림 (퍼블코드)</td><td>#FFF9D6 (accent-soft)</td><td>#222450</td><td>36px / 9999px</td></tr>
-            <tr><td>열림 (그룹코드)</td><td>#ECEEFF</td><td>#515382</td><td>36px / 9999px</td></tr>
-            <tr><td colspan="4" style="color:var(--text-muted);">? 버튼: 16px 원형 · 텍스트: 12px 500 · 모바일 바텀시트 / PC 팝오버</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2 class="section-title">Stat Card</h2>
-      <div class="section-txt">퍼블코드 버전 통계 카드. 기본 stat-card보다 큰 수치와 경고 상태 포함</div>
-      <div class="section-card">
-        <div class="card-label">Preview</div>
-        <div class="pc-guide" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px;">
-          <div class="stat-card-pc">
-            <p class="stat-label">공유한 코드</p>
-            <p class="stat-value">8</p>
-            <p class="stat-sub">퍼블 5 · 그룹 3</p>
-          </div>
-          <div class="stat-card-pc stat-warn">
-            <p class="stat-label">⚠️ 마감 임박</p>
-            <p class="stat-value">2</p>
-            <p class="stat-sub">D-3 이하 코드</p>
-          </div>
-          <div class="stat-card-pc stat-group">
-            <p class="stat-label">그룹 참여자</p>
-            <p class="stat-value">24</p>
-            <p class="stat-sub">이번 주 +6명</p>
-          </div>
-        </div>
-        <div class="divider"></div>
-        <div class="card-label">Spec</div>
-        <table class="spec-table">
-          <thead><tr><th>톤</th><th>배경</th><th>라벨·값 색</th><th>반지름 / 패딩</th></tr></thead>
-          <tbody>
-            <tr><td>기본 (Default)</td><td>#FFFFFF</td><td>muted / #111111</td><td>16px / 20px</td></tr>
-            <tr><td>경고 (Warn)</td><td>#fff7ed</td><td>#ea580c / #ea580c</td><td>16px / 20px</td></tr>
-            <tr><td>그룹 (Group)</td><td>#FFFFFF</td><td>#515382 / #515382</td><td>16px / 20px</td></tr>
-            <tr><td colspan="4" style="color:var(--text-muted);">숫자: Montserrat 700 32px · 라벨: 13px 500 · 서브: 12px</td></tr>
-          </tbody>
-        </table>
-      </div>
     </div>
 
     <!-- 퍼블카드 -->
@@ -1603,50 +1522,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         </table>
       </div>
 
-      <h2 class="section-title">CodeChip</h2>
-      <div class="section-txt">퍼블코드·그룹코드를 표시하는 인라인 칩. 오른쪽에 복사 버튼 포함</div>
-      <div class="section-card">
-        <div class="card-label">Preview</div>
-        <div class="pc-guide" style="display:flex; gap:12px; flex-wrap:wrap;">
-          <div class="codechip codechip-pub">PUBL-7K3M-A2<button class="codechip-copy">복사</button></div>
-          <div class="codechip codechip-grp">GRP-2024-XZ7<button class="codechip-copy">복사</button></div>
-        </div>
-        <div class="divider"></div>
-        <div class="card-label">Spec</div>
-        <table class="spec-table">
-          <thead><tr><th>종류</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
-          <tbody>
-            <tr><td>퍼블코드</td><td><code>.codechip-pub</code></td><td>#EEF0F8</td><td>var(--trendy)</td></tr>
-            <tr><td>그룹코드</td><td><code>.codechip-grp</code></td><td>#ECEEFF</td><td>#515382</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2 class="section-title">D-day 배지</h2>
-      <div class="section-txt">코드 만료일까지 남은 일수를 표시하는 상태 배지. 긴급도에 따라 3단계 색상 분기</div>
-      <div class="section-card">
-        <div class="card-label">Preview</div>
-        <div class="pc-guide" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-          <span class="dday-badge dday-urgent">D-2</span>
-          <span style="font-size:11px; color:var(--text-muted);">3일 이하</span>
-          <span style="padding:0 8px; color:var(--border);">|</span>
-          <span class="dday-badge dday-warn">D-5</span>
-          <span style="font-size:11px; color:var(--text-muted);">4~7일</span>
-          <span style="padding:0 8px; color:var(--border);">|</span>
-          <span class="dday-badge dday-safe">D-14</span>
-          <span style="font-size:11px; color:var(--text-muted);">8일 이상</span>
-        </div>
-        <div class="divider"></div>
-        <div class="card-label">Spec</div>
-        <table class="spec-table">
-          <thead><tr><th>조건</th><th>배경</th><th>텍스트</th><th>높이 / 반지름</th></tr></thead>
-          <tbody>
-            <tr><td>D-day ≤ 3 (긴급)</td><td>#fff1f2</td><td>#e11d48</td><td>24px / 9999px</td></tr>
-            <tr><td>D-day ≤ 7 (주의)</td><td>#fffbeb</td><td>#b45309</td><td>24px / 9999px</td></tr>
-            <tr><td>D-day &gt; 7 (정상)</td><td>#f0fdf4</td><td>#15803d</td><td>24px / 9999px</td></tr>
-          </tbody>
-        </table>
-      </div>
     </div>
 
     <!-- 코드 등록 -->
@@ -1656,31 +1531,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         <p>코드 번호를 직접 입력해 퍼블코드 / 그룹코드를 등록하는 UI</p>
       </div>
       <hr>
-
-      <h2 class="section-title">PubSubLink (상단 탭 바)</h2>
-      <div class="section-txt">퍼블코드 프로토타입 상단 네이비 탭 바. 선택 상태에 따라 3가지 스타일로 분기</div>
-      <div class="section-card">
-        <div class="card-label">Preview</div>
-        <div class="pc-guide">
-          <div class="pubsublink-bar">
-            <button class="pubsublink-btn type-navy">마이 코드</button>
-            <button class="pubsublink-btn type-purple">그룹코드 만들기</button>
-            <button class="pubsublink-btn type-default">퍼블코드 만들기</button>
-            <button class="pubsublink-btn">코드 등록</button>
-          </div>
-        </div>
-        <div class="divider"></div>
-        <div class="card-label">Spec</div>
-        <table class="spec-table">
-          <thead><tr><th>유형</th><th>클래스</th><th>해당 화면</th><th>선택 시 스타일</th></tr></thead>
-          <tbody>
-            <tr><td>Navy</td><td><code>.type-navy</code></td><td>마이 코드 · 그룹관리 · 마이코드 10+</td><td>bg var(--trendy) · border 2px solid #fff</td></tr>
-            <tr><td>Purple</td><td><code>.type-purple</code></td><td>그룹코드 만들기 · 대량 선택 · 그룹코드 종료</td><td>bg var(--attention)</td></tr>
-            <tr><td>Default</td><td><code>.type-default</code></td><td>퍼블코드 만들기 · 코드 등록</td><td>bg #fff · color var(--trendy)</td></tr>
-            <tr><td>비선택</td><td>—</td><td>모든 탭</td><td>color rgba(255,255,255,0.75)</td></tr>
-          </tbody>
-        </table>
-      </div>
 
       <h2 class="section-title">코드 등록 카드 (reg-card)</h2>
       <div class="section-txt">코드 입력창에 JetBrains Mono 폰트 사용. 입력 내용에 따라 3가지 상태로 변환</div>
@@ -2156,7 +2006,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
       <div class="section-txt">마이퍼블로그 사이드바 네비게이션. 너비 220px · PC 전용. 퍼블코드 대시보드 좌측에 위치</div>
       <div class="section-card">
         <div class="card-label">Preview</div>
-        <div class="pc-guide">
+        <div class="pc-guide" style="display:flex; justify-content:center;">
           <div class="lnb-demo-wrap">
             <div class="lnb-header">
               <p class="lnb-header-name">MY PUBLOG</p>
@@ -2185,6 +2035,158 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
             <tr><td><code>.lnb-section</code></td><td>padding 10px 0 4px · border-bottom 1px var(--border)</td></tr>
             <tr><td><code>.lnb-item.lnb-on</code></td><td>color var(--trendy) · font-weight 600 · bg rgba(34,36,80,0.04)</td></tr>
             <tr><td><code>.lnb-item.lnb-highlight</code></td><td>color #515382 · font-weight 600</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">PubSubLink (상단 탭 바)</h2>
+      <div class="section-txt">퍼블코드 프로토타입 상단 네이비 탭 바. 선택 상태에 따라 3가지 스타일로 분기</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide">
+          <div class="pubsublink-bar">
+            <button class="pubsublink-btn type-navy">마이 코드</button>
+            <button class="pubsublink-btn type-purple">그룹코드 만들기</button>
+            <button class="pubsublink-btn type-default">퍼블코드 만들기</button>
+            <button class="pubsublink-btn">코드 등록</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>유형</th><th>클래스</th><th>해당 화면</th><th>선택 시 스타일</th></tr></thead>
+          <tbody>
+            <tr><td>Navy</td><td><code>.type-navy</code></td><td>마이 코드 · 그룹관리 · 마이코드 10+</td><td>bg var(--trendy) · border 2px solid #fff</td></tr>
+            <tr><td>Purple</td><td><code>.type-purple</code></td><td>그룹코드 만들기 · 대량 선택 · 그룹코드 종료</td><td>bg var(--attention)</td></tr>
+            <tr><td>Default</td><td><code>.type-default</code></td><td>퍼블코드 만들기 · 코드 등록</td><td>bg #fff · color var(--trendy)</td></tr>
+            <tr><td>비선택</td><td>—</td><td>모든 탭</td><td>color rgba(255,255,255,0.75)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">SubTab 버튼</h2>
+      <div class="section-txt">퍼블코드 내 탭 전환 UI. 알약형(border-radius 9999px) · height 44px</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <button class="subtab-btn subtab-active">퍼블코드 <span class="subtab-count">5</span></button>
+          <button class="subtab-btn subtab-inactive">그룹코드 <span class="subtab-count">3</span></button>
+          <span style="display:inline-flex; align-items:center; padding:0 12px; font-size:11px; color:var(--text-muted);">그룹코드 선택 시 →</span>
+          <button class="subtab-btn subtab-inactive">퍼블코드</button>
+          <button class="subtab-btn subtab-purple">그룹코드 <span class="subtab-count">3</span></button>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
+          <tbody>
+            <tr><td>활성</td><td><code>.subtab-active</code></td><td>var(--trendy) #222450</td><td>#fff</td></tr>
+            <tr><td>비활성</td><td><code>.subtab-inactive</code></td><td>#fff</td><td>var(--text-muted)</td></tr>
+            <tr><td>퍼플 강조</td><td><code>.subtab-purple</code></td><td>#ECEEFF</td><td>#515382</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">CodeChip</h2>
+      <div class="section-txt">퍼블코드·그룹코드를 표시하는 인라인 칩. 오른쪽에 복사 버튼 포함</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:12px; flex-wrap:wrap;">
+          <div class="codechip codechip-pub">PUBL-7K3M-A2<button class="codechip-copy">복사</button></div>
+          <div class="codechip codechip-grp">GRP-2024-XZ7<button class="codechip-copy">복사</button></div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>종류</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
+          <tbody>
+            <tr><td>퍼블코드</td><td><code>.codechip-pub</code></td><td>#EEF0F8</td><td>var(--trendy)</td></tr>
+            <tr><td>그룹코드</td><td><code>.codechip-grp</code></td><td>#ECEEFF</td><td>#515382</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">D-day 배지</h2>
+      <div class="section-txt">코드 만료일까지 남은 일수를 표시하는 상태 배지. 긴급도에 따라 3단계 색상 분기</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <span class="dday-badge dday-urgent">D-2</span>
+          <span style="font-size:11px; color:var(--text-muted);">3일 이하</span>
+          <span style="padding:0 8px; color:var(--border);">|</span>
+          <span class="dday-badge dday-warn">D-5</span>
+          <span style="font-size:11px; color:var(--text-muted);">4~7일</span>
+          <span style="padding:0 8px; color:var(--border);">|</span>
+          <span class="dday-badge dday-safe">D-14</span>
+          <span style="font-size:11px; color:var(--text-muted);">8일 이상</span>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>조건</th><th>배경</th><th>텍스트</th><th>높이 / 반지름</th></tr></thead>
+          <tbody>
+            <tr><td>D-day ≤ 3 (긴급)</td><td>#fff1f2</td><td>#e11d48</td><td>24px / 9999px</td></tr>
+            <tr><td>D-day ≤ 7 (주의)</td><td>#fffbeb</td><td>#b45309</td><td>24px / 9999px</td></tr>
+            <tr><td>D-day &gt; 7 (정상)</td><td>#f0fdf4</td><td>#15803d</td><td>24px / 9999px</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">InlineHelp (인라인 도움말)</h2>
+      <div class="section-txt">? 버튼 클릭 시 해당 기능 설명을 팝업으로 보여주는 도움말 컴포넌트</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="inlinehelp-btn">
+            <span class="inlinehelp-icon">?</span> 퍼블코드란?
+          </button>
+          <button class="inlinehelp-btn" style="border-color:rgba(81,83,130,0.3); color:#515382;">
+            <span class="inlinehelp-icon" style="background:rgba(81,83,130,0.12); color:#515382;">?</span> 그룹코드란?
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>배경</th><th>테두리</th><th>높이 / 반지름</th></tr></thead>
+          <tbody>
+            <tr><td>기본 (닫힘)</td><td>#FFFFFF</td><td>rgba(0,0,0,0.15)</td><td>36px / 9999px</td></tr>
+            <tr><td>열림 (퍼블코드)</td><td>#FFF9D6 (accent-soft)</td><td>#222450</td><td>36px / 9999px</td></tr>
+            <tr><td>열림 (그룹코드)</td><td>#ECEEFF</td><td>#515382</td><td>36px / 9999px</td></tr>
+            <tr><td colspan="4" style="color:var(--text-muted);">? 버튼: 16px 원형 · 텍스트: 12px 500 · 모바일 바텀시트 / PC 팝오버</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">Stat Card</h2>
+      <div class="section-txt">퍼블코드 버전 통계 카드. 기본 stat-card보다 큰 수치와 경고 상태 포함</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px;">
+          <div class="stat-card-pc">
+            <p class="stat-label">공유한 코드</p>
+            <p class="stat-value">8</p>
+            <p class="stat-sub">퍼블 5 · 그룹 3</p>
+          </div>
+          <div class="stat-card-pc stat-warn">
+            <p class="stat-label">⚠️ 마감 임박</p>
+            <p class="stat-value">2</p>
+            <p class="stat-sub">D-3 이하 코드</p>
+          </div>
+          <div class="stat-card-pc stat-group">
+            <p class="stat-label">그룹 참여자</p>
+            <p class="stat-value">24</p>
+            <p class="stat-sub">이번 주 +6명</p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>톤</th><th>배경</th><th>라벨·값 색</th><th>반지름 / 패딩</th></tr></thead>
+          <tbody>
+            <tr><td>기본 (Default)</td><td>#FFFFFF</td><td>muted / #111111</td><td>16px / 20px</td></tr>
+            <tr><td>경고 (Warn)</td><td>#fff7ed</td><td>#ea580c / #ea580c</td><td>16px / 20px</td></tr>
+            <tr><td>그룹 (Group)</td><td>#FFFFFF</td><td>#515382 / #515382</td><td>16px / 20px</td></tr>
+            <tr><td colspan="4" style="color:var(--text-muted);">숫자: Montserrat 700 32px · 라벨: 13px 500 · 서브: 12px</td></tr>
           </tbody>
         </table>
       </div>
