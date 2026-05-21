@@ -106,6 +106,41 @@
 
 ---
 
+## D-day 배지
+
+코드 만료일까지 남은 일수를 표시하는 상태 배지. 3단계 긴급도로 색상 분기.
+
+| 상태 | 클래스 | 배경 | 텍스트 |
+|------|--------|------|--------|
+| 여유 (D-8+) | `.dday-safe` | `var(--belief)` #F0F1F6 | `var(--text-muted)` #777 |
+| 주의 (D-3~7) | `.dday-warn` | `#FFF3CD` | `#856404` |
+| 긴급 (D-0~2) | `.dday-urgent` | `#FFE5E5` | `#DC3545` |
+
+```css
+.dday-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dday-safe   { background: var(--belief); color: var(--text-muted); }
+.dday-warn   { background: #FFF3CD; color: #856404; }
+.dday-urgent { background: #FFE5E5; color: #DC3545; }
+```
+
+```html
+<span class="dday-badge dday-safe">D-15</span>
+<span class="dday-badge dday-warn">D-5</span>
+<span class="dday-badge dday-urgent">D-1</span>
+```
+
+---
+
 ## PublCard (퍼블카드 v2)
 
 퍼블코드를 시각적으로 표시하는 카드 컴포넌트. border-radius 28px.
@@ -282,6 +317,116 @@
       <button class="publcard-btn-share">▷ 코드 공유</button>
     </div>
   </div>
+</div>
+```
+
+---
+
+## Step Indicator (진행 상태 표시줄)
+
+다단계 폼 상단에 표시되는 진행 상태 바. Navy(퍼블코드 만들기)와 Purple(그룹코드 만들기) 2가지 테마.
+
+| 요소 | 스타일 |
+|------|--------|
+| STEP N/N 텍스트 | Montserrat 700 · 11px · letter-spacing 0.12em · `var(--text-muted)` · 현재 스텝 강조색 |
+| 프로그레스 바 트랙 | height 3px · border-radius 9999px · `rgba(0,0,0,0.06)` |
+| 프로그레스 바 채움 (Navy) | `#222450` · transition 300ms |
+| 프로그레스 바 채움 (Purple/완료) | `#7b42f6` · transition 300ms |
+| 스텝 이름 | 13px 600 · 강조색 |
+
+```css
+.step-indicator { display: flex; align-items: center; gap: 10px; }
+
+.step-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.step-num .step-accent { color: var(--trendy); }
+.step-num .step-accent.purple { color: #7b42f6; }
+
+.step-track {
+  flex: 1;
+  height: 3px;
+  border-radius: 9999px;
+  background: rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.step-fill { height: 100%; border-radius: 9999px; transition: width 300ms; background: var(--trendy); }
+.step-fill.purple { background: #7b42f6; }
+
+.step-label { font-size: 13px; font-weight: 600; white-space: nowrap; color: var(--trendy); }
+.step-label.purple { color: #7b42f6; }
+```
+
+```html
+<!-- Navy 테마 (퍼블코드 만들기) — STEP 1/3 -->
+<div class="step-indicator">
+  <span class="step-num">STEP <span class="step-accent">1</span> / 3</span>
+  <div class="step-track"><div class="step-fill" style="width: 33%"></div></div>
+  <span class="step-label">상품 선택</span>
+</div>
+
+<!-- Purple 테마 (그룹코드 만들기) — STEP 3/3 완료 -->
+<div class="step-indicator">
+  <span class="step-num">STEP <span class="step-accent purple">3</span> / 3</span>
+  <div class="step-track"><div class="step-fill purple" style="width: 100%"></div></div>
+  <span class="step-label purple">완료</span>
+</div>
+```
+
+---
+
+## Stepper (수량 조절)
+
+숫자 입력 전용 증감 버튼 UI.
+
+| 항목 | 스펙 |
+|------|------|
+| 버튼 크기 | 36 × 36px · border-radius 9999px |
+| 버튼 테두리 | `border: 1.5px solid rgba(0,0,0,0.12)` |
+| 수치 | Montserrat 700 · min-width 40px · text-align center · 14px |
+
+```css
+.stepper { display: inline-flex; align-items: center; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 9999px; overflow: hidden; }
+
+.stepper-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--stability);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.stepper-btn:hover { background: var(--belief); }
+
+.stepper-val {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  min-width: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--stability);
+}
+```
+
+```html
+<div class="stepper">
+  <button class="stepper-btn">−</button>
+  <span class="stepper-val">1</span>
+  <button class="stepper-btn">+</button>
 </div>
 ```
 

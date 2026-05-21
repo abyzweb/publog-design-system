@@ -24,6 +24,7 @@ html { scrollbar-gutter: stable; }
   --border: #E4E5EC;
   --sidebar-w: 252px;
   --radius: 12px;
+  --group-purple-soft: #ECEEFF;
 }
 
 body {
@@ -183,6 +184,37 @@ body {
   color: #fff;
   background: rgba(255,255,255,0.06);
 }
+
+.nav-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 6px 24px;
+  margin: 1px 10px;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.nav-sub-header:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.06); }
+.nav-sub-header.open .chevron { transform: rotate(90deg); }
+.nav-sub-items { overflow: hidden; }
+.nav-sub-sub {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px 6px 36px;
+  margin: 1px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.nav-sub-sub:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.05); }
+.nav-sub-sub.active { color: #fff; background: rgba(255,255,255,0.08); }
 
 
 /* 사이드바 하단 */
@@ -585,7 +617,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 .bg-guide .brand-card .sub-name { font-size: 12px; margin-top: 4px; font-weight: 300; }
 .bg-guide .brand-card.primary .sub-name { color: rgba(255,255,255,0.45); }
 .bg-guide .brand-card.secondary .sub-name { color: var(--text-muted); }
-.bg-guide .slogan-box { background: var(--belief); border-radius: var(--radius); border: 1px solid var(--border); padding: 28px 32px; margin-bottom: 4px; }
+.bg-guide .slogan-box { margin-bottom: 4px; }
 .bg-guide .slogan-box .slogan-en { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; color: var(--trendy); letter-spacing: -0.3px; margin-bottom: 8px; }
 .bg-guide .slogan-box .slogan-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
 
@@ -626,12 +658,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 .bg-guide .font-card-meta { padding: 14px 16px; background: #fff; border-top: 1px solid var(--border); }
 .bg-guide .font-card-meta .fn { font-size: 12px; font-weight: 700; color: var(--trendy); }
 .bg-guide .font-card-meta .fw { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-.bg-guide .type-scale-table { width: 100%; border-collapse: collapse; }
-.bg-guide .type-scale-table th { text-align: left; padding: 8px 14px; background: var(--trendy); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; }
-.bg-guide .type-scale-table td { padding: 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-.bg-guide .type-scale-table tr:last-child td { border-bottom: none; }
-.bg-guide .type-scale-table tr:nth-child(even) td { background: var(--belief); }
-.bg-guide .type-meta { font-size: 10px; color: var(--text-muted); font-family: 'Montserrat', sans-serif; }
 
 /* ── 태그 & 뱃지 ── */
 .bg-guide .memo_tag { color: #fff !important; text-align: center; padding: 0 10px; font-size: 11px; border-radius: 30px; display: inline-flex; align-items: center; justify-content: center; height: 22px; position: relative; margin-bottom: 8px; white-space: nowrap; }
@@ -663,8 +689,25 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 .bg-guide .search_wrap .searching_wrap .icon_search { position: absolute; right: 5px; top: 5px; width: 25px; height: 25px; background: transparent url(https://www.publog.co.kr/gnb/new/ico_search.png?a=1) no-repeat 2px 7px; background-size: 16px auto; cursor: pointer; border: none; }
 .bg-guide .search_select_wrap { position: relative; width: 110px; }
 .bg-guide .search_select_wrap .select_fake { width: 63%; padding: 8px 0 8px 25px; font-size: 12px; background: #fff; text-align: left; cursor: pointer; position: relative; border: none; font-family: 'Noto Sans KR', sans-serif; }
-.bg-guide .search_select_wrap .select_fake::after { content: ""; position: absolute; right: 0; top: 50%; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid #666; transform: translateY(-50%); }
-.bg-guide .s-state-btn { font-size: 11px; padding: 5px 12px; border: 1px solid #ccc; border-radius: 20px; background: #fff; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; }
+.bg-guide .search_select_wrap .select_fake::after { content: ""; position: absolute; right: 0; top: 50%; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid #666; transform: translateY(-50%); transition: transform 0.2s ease; }
+.bg-guide .search_select_wrap .select_fake.open::after { transform: translateY(-50%) rotate(180deg); }
+.bg-guide .search_select_wrap .select_fake_list { position: absolute; left: 0; right: 0; top: 45px; margin: 0; background: #fff; border: 1px solid #ccc; border-radius: 8px; list-style: none; display: none; z-index: 9999; overflow: hidden; font-size: 12px; padding: 0; }
+.bg-guide .search_select_wrap .select_fake_list li { font-size: 12px; padding: 6px 26px 6px 15px; cursor: pointer; transition: background 0.15s ease; position: relative; }
+.bg-guide .search_select_wrap .select_fake_list li:hover { background: #f3f3f3; color: #000; }
+.bg-guide .search_select_wrap .select_fake_list li.selected { color: #222450; font-weight: 600; }
+.bg-guide .search_select_wrap .select_fake_list li.selected::after { content: ""; position: absolute; right: 15px; top: 50%; width: 6px; height: 7px; border-right: 2px solid #222450; border-bottom: 2px solid #222450; transform: translateY(-60%) rotate(45deg); }
+.bg-guide .search-auto-dropdown { position: absolute; top: 46px; left: 0; right: 0; background: #fff; border-radius: 8px; box-shadow: 0 6px 28px rgba(0,0,0,0.12); z-index: 20; overflow: hidden; }
+.bg-guide .search-auto-row { display: flex; align-items: center; padding: 10px 16px; gap: 10px; cursor: pointer; }
+.bg-guide .search-auto-row:hover { background: #f8f8f8; }
+.bg-guide .search-auto-picon { width: 26px; height: 26px; background: #222450; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.bg-guide .search-auto-name { flex: 1; font-size: 13px; color: #222450; font-weight: 500; }
+.bg-guide .search-auto-tag { font-size: 11px; color: #aaa; white-space: nowrap; }
+.bg-guide .search-auto-recent { display: flex; align-items: center; padding: 9px 16px; gap: 8px; }
+.bg-guide .search-auto-recent-name { flex: 1; font-size: 13px; color: #555; }
+.bg-guide .search-auto-close { font-size: 14px; color: #ccc; cursor: pointer; line-height: 1; }
+.bg-guide .search-auto-footer { padding: 9px 16px; text-align: right; border-top: 1px solid #f0f0f0; }
+.bg-guide .search-auto-clear { font-size: 12px; color: #aaa; cursor: pointer; }
+.bg-guide .s-state-btn { font-size: 11px; padding: 5px 12px; border: 1px solid #ccc; border-radius: 20px; background: #fff; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; transition: all .15s; }
 .bg-guide .s-state-btn.s-on { background: #222450; color: #fff; border-color: #222450; }
 
 /* ── 상품 카드 ── */
@@ -703,8 +746,163 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 .bg-guide .b-hot { background: #FF5400; color: #fff; }
 .bg-guide .b-h   { background: var(--belief); color: var(--trendy); }
 
-/* ── spec-table code 스타일 (bg-guide 내) ── */
-.bg-guide .spec-table code { font-family: 'Montserrat', sans-serif; font-size: 10px; background: #ebebf5; padding: 2px 6px; border-radius: 3px; color: var(--trendy); }
+
+/* ── 퍼블코드 전용 컴포넌트 (.pc-guide 스코프) ── */
+.pc-guide .subtab-btn { display:inline-flex; align-items:center; gap:6px; height:44px; padding:0 16px; border-radius:9999px; font-size:13px; font-weight:600; border:1.5px solid; cursor:pointer; transition:all 0.15s; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .subtab-active   { background:var(--trendy); color:#fff; border-color:var(--trendy); }
+.pc-guide .subtab-inactive { background:#fff; color:var(--text-muted); border-color:rgba(0,0,0,0.08); }
+.pc-guide .subtab-purple   { background:#ECEEFF; color:#515382; border-color:rgba(81,83,130,0.3); }
+.pc-guide .subtab-count    { font-size:11px; font-weight:700; opacity:0.7; }
+
+.pc-guide .codechip { display:inline-flex; align-items:center; gap:8px; height:36px; padding:0 8px 0 12px; border-radius:8px; font-family:'Montserrat',monospace; font-weight:700; font-size:14px; letter-spacing:0.08em; }
+.pc-guide .codechip-pub { background:#EEF0F8; color:var(--trendy); }
+.pc-guide .codechip-grp { background:#ECEEFF; color:#515382; }
+.pc-guide .codechip-copy { display:inline-flex; align-items:center; justify-content:center; height:24px; min-width:32px; padding:0 8px; border-radius:6px; font-size:11px; font-weight:600; color:#fff; border:none; cursor:pointer; }
+.pc-guide .codechip-pub .codechip-copy { background:var(--trendy); }
+.pc-guide .codechip-grp .codechip-copy { background:#515382; }
+
+.pc-guide .publcard-wrap { border-radius:28px; background:#fff; border:1px solid rgba(0,0,0,0.06); overflow:hidden; width:320px; max-width:100%; box-shadow:0 20px 50px -20px rgba(0,0,0,0.2); }
+.pc-guide .publcard-thumb { aspect-ratio:4/3; background:#1A2B5F; position:relative; display:flex; align-items:flex-end; padding:16px; overflow:hidden; }
+.pc-guide .publcard-thumb-circle { position:absolute; right:-20px; bottom:-20px; width:110px; height:110px; border-radius:50%; background:var(--friendly); opacity:0.85; }
+.pc-guide .publcard-status { position:absolute; top:14px; left:14px; display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 10px; border-radius:9999px; background:rgba(255,255,255,0.95); font-size:11px; font-weight:700; color:var(--stability); }
+.pc-guide .publcard-status-dot { width:6px; height:6px; border-radius:50%; background:var(--friendly); }
+.pc-guide .publcard-noauth { position:absolute; top:14px; right:14px; display:inline-flex; align-items:center; height:28px; padding:0 10px; border-radius:9999px; background:var(--friendly); font-size:10.5px; font-weight:800; color:var(--stability); }
+.pc-guide .publcard-body { padding:20px 24px 8px; }
+.pc-guide .publcard-price-label { font-size:10.5px; font-weight:700; letter-spacing:0.18em; color:var(--text-muted); }
+.pc-guide .publcard-price { font-family:'Montserrat',sans-serif; font-size:26px; font-weight:800; letter-spacing:-0.03em; color:var(--stability); margin-top:2px; }
+.pc-guide .publcard-price small { font-size:14px; font-weight:700; margin-left:2px; }
+.pc-guide .publcard-footer { padding:0 24px 20px; }
+.pc-guide .publcard-code-row { display:flex; align-items:center; justify-content:space-between; font-size:11px; color:var(--text-muted); font-weight:500; margin-bottom:12px; }
+.pc-guide .publcard-code-val { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:800; letter-spacing:0.06em; color:var(--stability); }
+.pc-guide .publcard-actions { display:flex; gap:8px; }
+.pc-guide .publcard-btn-url { flex:1; height:44px; border-radius:9999px; border:1.5px solid rgba(0,0,0,0.12); background:#fff; font-size:12.5px; font-weight:700; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .publcard-btn-share { flex:1; height:44px; border-radius:9999px; background:var(--trendy); color:#fff; font-size:12.5px; font-weight:700; border:none; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+
+.pc-guide .field-group { margin-bottom:20px; }
+.pc-guide .field-label { display:block; font-size:13px; font-weight:600; color:var(--stability); margin-bottom:8px; }
+.pc-guide .field-input-lg { width:100%; height:48px; border:1px solid var(--border); border-radius:8px; padding:0 14px; font-size:14px; font-family:'Noto Sans KR',sans-serif; color:var(--stability); background:#fff; outline:none; }
+.pc-guide .field-input-lg:focus { border-color:var(--trendy); }
+.pc-guide .field-hint { font-size:11.5px; color:var(--text-muted); margin-top:6px; }
+.pc-guide .inlinehelp-btn { display:inline-flex; align-items:center; gap:6px; height:36px; padding:0 12px; border-radius:9999px; background:#fff; border:1px solid rgba(0,0,0,0.15); font-size:12px; font-weight:500; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .inlinehelp-icon { width:16px; height:16px; border-radius:50%; background:rgba(0,0,0,0.1); font-size:10px; font-weight:700; color:var(--text-muted); display:inline-flex; align-items:center; justify-content:center; }
+
+.pc-guide .stat-card-pc { border-radius:16px; padding:20px; border:1px solid rgba(0,0,0,0.06); background:#fff; }
+.pc-guide .stat-card-pc.stat-warn { background:#fff7ed; border-color:rgba(234,88,12,0.25); }
+.pc-guide .stat-card-pc .stat-label { font-size:13px; font-weight:500; color:var(--text-muted); }
+.pc-guide .stat-card-pc .stat-value { font-family:'Montserrat',sans-serif; font-size:32px; font-weight:700; letter-spacing:-0.03em; color:var(--stability); margin-top:4px; }
+.pc-guide .stat-card-pc .stat-sub { font-size:12px; color:var(--text-muted); margin-top:4px; }
+.pc-guide .stat-card-pc.stat-warn .stat-label,
+.pc-guide .stat-card-pc.stat-warn .stat-value { color:#ea580c; }
+
+.pc-guide .cb-wrap { display:flex; align-items:center; gap:8px; cursor:pointer; }
+.pc-guide .cb-input { display:none; }
+.pc-guide .cb-box { width:18px; height:18px; border-radius:4px; border:1.5px solid var(--border); background:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.15s; }
+.pc-guide .cb-input:checked + .cb-box { background:var(--trendy); border-color:var(--trendy); }
+.pc-guide .cb-input:checked + .cb-box::after { content:''; display:block; width:10px; height:6px; border-left:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(-45deg) translateY(-1px); }
+.pc-guide .cb-label { font-size:13px; color:var(--text-body); }
+
+.pc-guide .reg-card { background:#fff; border-radius:24px; border:1px solid rgba(0,0,0,0.06); padding:32px 28px; max-width:400px; }
+.pc-guide .reg-icon { width:64px; height:64px; border-radius:50%; background:var(--belief); display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:20px; }
+.pc-guide .reg-input { width:100%; height:64px; border-radius:16px; border:2px solid rgba(0,0,0,0.10); font-family:'JetBrains Mono',monospace; font-size:24px; font-weight:700; letter-spacing:0.18em; text-align:center; outline:none; margin-bottom:12px; }
+.pc-guide .reg-input:focus { border-color:var(--trendy); }
+.pc-guide .reg-badge { display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 12px; border-radius:9999px; font-size:12px; font-weight:700; margin-bottom:12px; }
+.pc-guide .reg-badge.pub { background:#EEF0F8; color:var(--trendy); }
+.pc-guide .reg-badge.grp { background:var(--group-purple-soft); color:var(--attention); }
+.pc-guide .reg-badge-dot { width:6px; height:6px; border-radius:50%; }
+.pc-guide .reg-badge.pub .reg-badge-dot { background:var(--trendy); }
+.pc-guide .reg-badge.grp .reg-badge-dot { background:var(--attention); }
+.pc-guide .reg-btn { width:100%; height:56px; border-radius:16px; border:none; font-size:15px; font-weight:700; color:#fff; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .reg-btn.pub      { background:var(--trendy); }
+.pc-guide .reg-btn.grp      { background:var(--attention); }
+.pc-guide .reg-btn.disabled { background:#ccc; cursor:not-allowed; }
+
+.pc-guide .bulk-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.pc-guide .bulk-count-badge { height:28px; padding:0 12px; border-radius:9999px; background:var(--group-purple-soft); color:var(--attention); font-size:12px; font-weight:700; display:inline-flex; align-items:center; }
+.pc-guide .bulk-filter-tab { height:28px; padding:0 12px; border-radius:9999px; font-size:11px; font-weight:600; border:1.5px solid transparent; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .bulk-filter-tab.on  { background:var(--trendy); color:#fff; border-color:var(--trendy); }
+.pc-guide .bulk-filter-tab.off { background:#f3f4f6; color:#4b5563; }
+.pc-guide .bulk-item { display:flex; align-items:center; gap:12px; padding:12px; border-radius:16px; border:1.5px solid rgba(0,0,0,0.08); margin-bottom:8px; transition:all 0.15s; }
+.pc-guide .bulk-item.on { border-color:var(--trendy); background:var(--group-purple-soft); }
+.pc-guide .bulk-emoji { width:48px; height:48px; border-radius:12px; background:var(--belief); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.pc-guide .bulk-title { font-size:14px; font-weight:600; }
+.pc-guide .bulk-spec  { font-size:11px; color:var(--text-muted); margin-top:2px; }
+.pc-guide .bulk-price { font-size:15px; font-weight:800; margin-left:auto; }
+
+.pc-guide .grp-card { background:#fff; border-radius:24px; border:1px solid rgba(0,0,0,0.06); overflow:hidden; }
+.pc-guide .grp-strip { display:flex; align-items:center; gap:6px; padding:12px 20px; background:var(--group-purple-soft); }
+.pc-guide .grp-strip-dot   { width:6px; height:6px; border-radius:50%; background:var(--attention); }
+.pc-guide .grp-strip-label { font-size:12px; font-weight:700; color:var(--attention); }
+.pc-guide .grp-strip-partial { font-size:11px; font-weight:600; color:#c2410c; }
+.pc-guide .grp-strip-all     { font-size:11px; font-weight:600; color:#dc2626; }
+.pc-guide .grp-items-row { display:flex; gap:8px; padding:16px 20px; overflow-x:auto; scrollbar-width:none; }
+.pc-guide .grp-tile { flex-shrink:0; display:flex; flex-direction:column; align-items:center; width:64px; gap:6px; }
+.pc-guide .grp-thumb { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:24px; position:relative; }
+.pc-guide .grp-thumb.active-t  { background:var(--group-purple-soft); }
+.pc-guide .grp-thumb.soldout-t { background:rgba(0,0,0,0.08); opacity:0.6; }
+.pc-guide .grp-so-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.52); border-radius:16px; display:flex; align-items:center; justify-content:center; }
+.pc-guide .grp-so-text { color:#fff; font-weight:900; font-size:7px; text-align:center; }
+.pc-guide .grp-tile-name { font-size:10px; font-weight:600; text-align:center; line-height:1.3; }
+
+.pc-guide .grp-tab-bar { display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; padding-bottom:4px; }
+.pc-guide .grp-tab-pill { flex-shrink:0; height:36px; padding:0 14px; border-radius:9999px; font-size:12px; font-weight:700; white-space:nowrap; border:none; cursor:pointer; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .grp-tab-pill.act   { background:var(--trendy); color:#fff; }
+.pc-guide .grp-tab-pill.inact { background:var(--belief); color:var(--text-body); }
+.pc-guide .grp-stat-row { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.pc-guide .grp-stat { flex:1; min-width:80px; background:var(--belief); border-radius:12px; padding:14px 16px; }
+.pc-guide .grp-stat.dday { background:#eef2ff; }
+.pc-guide .grp-stat.dday .grp-stat-val { color:var(--attention); }
+.pc-guide .grp-stat-val   { font-family:'Montserrat',sans-serif; font-size:22px; font-weight:800; color:var(--trendy); }
+.pc-guide .grp-stat-label { font-size:10.5px; color:var(--text-muted); margin-top:2px; }
+
+.pc-guide .mycode-main-tabs { display:flex; border-bottom:2px solid var(--border); margin-bottom:20px; }
+.pc-guide .mycode-main-tab { padding:10px 20px; font-size:14px; font-weight:600; border-bottom:3px solid transparent; margin-bottom:-2px; cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .mycode-main-tab.on  { color:var(--trendy); border-bottom-color:var(--trendy); }
+.pc-guide .mycode-main-tab.off { color:var(--text-muted); }
+.pc-guide .mycode-section-label { font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); margin:16px 0 8px; }
+.pc-guide .mycode-card { display:flex; align-items:center; gap:12px; padding:12px; border-radius:16px; border:1px solid var(--border); background:#fff; margin-bottom:8px; }
+.pc-guide .mycode-thumb { width:48px; height:48px; border-radius:12px; background:var(--belief); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.pc-guide .mycode-title { font-size:14px; font-weight:600; }
+.pc-guide .mycode-meta  { font-size:11px; color:var(--text-muted); margin-top:2px; }
+.pc-guide .mycode-status { height:20px; padding:0 8px; border-radius:4px; font-size:10px; font-weight:700; display:inline-flex; align-items:center; white-space:nowrap; }
+.pc-guide .mycode-status.active-s  { background:#dcfce7; color:#15803d; }
+.pc-guide .mycode-status.ended-s   { background:#f3f4f6; color:#6b7280; }
+.pc-guide .mycode-status.soldout-s { background:#fef2f2; color:#dc2626; }
+.pc-guide .mycode-price { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:800; margin-left:auto; }
+
+.pc-guide .pubsublink-bar { display:flex; gap:6px; background:var(--trendy); padding:8px 12px; overflow-x:auto; scrollbar-width:none; border-radius:var(--radius); }
+.pc-guide .pubsublink-btn { flex-shrink:0; height:28px; padding:0 12px; border-radius:9999px; font-size:12.5px; font-weight:600; border:none; cursor:pointer; color:rgba(255,255,255,0.75); background:transparent; transition:all 0.15s; white-space:nowrap; font-family:'Noto Sans KR',sans-serif; }
+.pc-guide .pubsublink-btn:hover { background:rgba(255,255,255,0.1); }
+.pc-guide .pubsublink-btn.type-navy    { background:var(--trendy); border:2px solid #fff; color:#fff; }
+.pc-guide .pubsublink-btn.type-purple  { background:var(--attention); color:#fff; }
+.pc-guide .pubsublink-btn.type-default { background:#fff; color:var(--trendy); }
+
+.pc-guide .lnb-wrap { width:220px; background:#fff; flex-shrink:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
+.pc-guide .lnb-header { background:var(--trendy); padding:16px 20px; color:#fff; }
+.pc-guide .lnb-section-label { font-size:9.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#777; padding:12px 20px 4px; }
+.pc-guide .lnb-item { display:block; font-size:12.5px; padding:7px 20px; color:var(--text-body); cursor:pointer; text-decoration:none; }
+.pc-guide .lnb-item:hover     { background:var(--belief); }
+.pc-guide .lnb-item.active    { color:var(--trendy); font-weight:600; background:rgba(34,36,80,0.04); }
+.pc-guide .lnb-item.highlight { color:var(--attention); font-weight:600; }
+
+.pc-guide .step-indicator { display:flex; align-items:center; gap:10px; }
+.pc-guide .step-num { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.12em; color:var(--text-muted); white-space:nowrap; }
+.pc-guide .step-num .step-accent { color:var(--trendy); }
+.pc-guide .step-num .step-accent.purple { color:#7b42f6; }
+.pc-guide .step-track { flex:1; height:3px; border-radius:9999px; background:rgba(0,0,0,0.06); overflow:hidden; }
+.pc-guide .step-fill { height:100%; border-radius:9999px; transition:width 300ms; background:var(--trendy); }
+.pc-guide .step-fill.purple { background:#7b42f6; }
+.pc-guide .step-label { font-size:13px; font-weight:600; white-space:nowrap; color:var(--trendy); }
+.pc-guide .step-label.purple { color:#7b42f6; }
+
+.pc-guide .stepper { display:inline-flex; align-items:center; border:1.5px solid rgba(0,0,0,0.12); border-radius:9999px; overflow:hidden; }
+.pc-guide .stepper-btn { width:36px; height:36px; border:none; background:#fff; cursor:pointer; font-size:18px; font-weight:300; color:var(--stability); display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+.pc-guide .stepper-btn:hover { background:var(--belief); }
+.pc-guide .stepper-val { font-family:'Montserrat',sans-serif; font-weight:700; min-width:40px; text-align:center; font-size:14px; color:var(--stability); }
+
+.pc-guide .dday-badge { display:inline-flex; align-items:center; height:20px; padding:0 8px; border-radius:4px; font-size:10px; font-weight:700; white-space:nowrap; }
+.pc-guide .dday-safe   { background:var(--belief); color:var(--text-muted); }
+.pc-guide .dday-warn   { background:#FFF3CD; color:#856404; }
+.pc-guide .dday-urgent { background:#FFE5E5; color:#DC3545; }
 
 </style>
 </head>
@@ -769,7 +967,19 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
       <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
     <div class="nav-items">
-      <div class="nav-sub" onclick="showPage('pubcode')">퍼블코드</div>
+      <div class="nav-sub-header open" onclick="toggleSubGroup(this)">
+        퍼블코드 컴포넌트
+        <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="nav-sub-items">
+        <div class="nav-sub-sub" onclick="showPage('pubcode-form')">폼 &amp; 입력</div>
+        <div class="nav-sub-sub" onclick="showPage('pubcode-card')">퍼블카드</div>
+        <div class="nav-sub-sub" onclick="showPage('pubcode-register')">코드 등록</div>
+        <div class="nav-sub-sub" onclick="showPage('pubcode-bulk')">대량 선택 UX</div>
+        <div class="nav-sub-sub" onclick="showPage('pubcode-groupend')">그룹코드 종료</div>
+        <div class="nav-sub-sub" onclick="showPage('pubcode-groupmanage')">그룹관리 10+</div>
+        <div class="nav-sub-sub" onclick="showPage('pubcode-mycode')">마이코드 10+</div>
+      </div>
     </div>
   </div>
 
@@ -1109,13 +1319,638 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
       </div>
     </div>
 
-    <div class="page" id="page-pubcode">
+    <!-- ─── 퍼블코드 컴포넌트 ─── -->
+
+    <!-- 폼 & 입력 -->
+    <div class="page" id="page-pubcode-form">
       <div class="section-header">
-        <h1 class="page-title">퍼블코드</h1>
+        <h1 class="page-title">폼 &amp; 입력</h1>
+        <p>퍼블코드 페이지 전용 입력 폼 컴포넌트</p>
       </div>
       <hr>
+
+      <h2 class="section-title">Step Indicator</h2>
+      <div class="section-txt">다단계 폼 상단 진행 상태 바. Navy(퍼블코드 만들기)와 Purple(그룹코드 만들기) 2가지 테마</div>
       <div class="section-card">
-        <p class="placeholder-note">콘텐츠를 준비 중이에요.</p>
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; flex-direction:column; gap:20px; padding:8px 0; max-width:480px;">
+          <div>
+            <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">STEP 1 / 3 — Navy 테마</p>
+            <div class="step-indicator">
+              <span class="step-num">STEP <span class="step-accent">1</span> / 3</span>
+              <div class="step-track"><div class="step-fill" style="width:33%"></div></div>
+              <span class="step-label">상품 선택</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">STEP 2 / 3 — Navy 테마</p>
+            <div class="step-indicator">
+              <span class="step-num">STEP <span class="step-accent">2</span> / 3</span>
+              <div class="step-track"><div class="step-fill" style="width:66%"></div></div>
+              <span class="step-label">옵션 설정</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">STEP 3 / 3 — Purple 테마 (그룹코드)</p>
+            <div class="step-indicator">
+              <span class="step-num">STEP <span class="step-accent purple">3</span> / 3</span>
+              <div class="step-track"><div class="step-fill purple" style="width:100%"></div></div>
+              <span class="step-label purple">완료</span>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스타일</th></tr></thead>
+          <tbody>
+            <tr><td>STEP N/N 텍스트</td><td>Montserrat 700 · 11px · letter-spacing 0.12em · 현재 스텝 강조색</td></tr>
+            <tr><td>프로그레스 바 트랙</td><td>height 3px · border-radius 9999px · rgba(0,0,0,0.06)</td></tr>
+            <tr><td>프로그레스 바 채움 (Navy)</td><td><code>#222450</code> · transition 300ms</td></tr>
+            <tr><td>프로그레스 바 채움 (Purple/완료)</td><td><code>#7b42f6</code> · transition 300ms</td></tr>
+            <tr><td>스텝 이름</td><td>13px 600 · 강조색</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">Stepper</h2>
+      <div class="section-txt">수량 조절 전용 증감 버튼 UI</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0;">
+          <div class="stepper">
+            <button class="stepper-btn">−</button>
+            <span class="stepper-val">1</span>
+            <button class="stepper-btn">+</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td>버튼</td><td>36 × 36px · border-radius 9999px · border 1.5px rgba(0,0,0,0.12)</td></tr>
+            <tr><td>수치</td><td>Montserrat 700 · min-width 40px · text-align center · 14px</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">SubTab 버튼</h2>
+      <div class="section-txt">퍼블코드 내 탭 전환 UI. 알약형(border-radius 9999px) · height 44px</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; flex-direction:column; gap:16px; padding:8px 0;">
+          <div style="display:flex; gap:8px;">
+            <button class="subtab-btn subtab-active">퍼블코드 <span class="subtab-count">5</span></button>
+            <button class="subtab-btn subtab-inactive">그룹코드 <span class="subtab-count">3</span></button>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="subtab-btn subtab-inactive">퍼블코드</button>
+            <button class="subtab-btn subtab-purple">그룹코드 <span class="subtab-count">3</span></button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
+          <tbody>
+            <tr><td>활성</td><td><code>.subtab-active</code></td><td>var(--trendy) #222450</td><td>#fff</td></tr>
+            <tr><td>비활성</td><td><code>.subtab-inactive</code></td><td>#fff</td><td>var(--text-muted)</td></tr>
+            <tr><td>퍼플 강조</td><td><code>.subtab-purple</code></td><td>#ECEEFF</td><td>#515382</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">Field &amp; InlineHelp</h2>
+      <div class="section-txt">퍼블코드 내 입력 폼. 기본 border-radius 4px와 달리 <strong>8px</strong> 적용</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="max-width:400px; padding:8px 0;">
+          <div class="field-group">
+            <label class="field-label">코드 제목</label>
+            <input class="field-input-lg" type="text" placeholder="예: 아이돌 굿즈 포토카드 세트">
+            <p class="field-hint">💡 받는 사람에게 표시되는 이름이에요</p>
+          </div>
+          <button class="inlinehelp-btn">
+            <span class="inlinehelp-icon">?</span> 퍼블코드란?
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td><code>.field-input-lg</code></td><td>height 48px · border-radius <strong>8px</strong> · border 1px var(--border) · focus border var(--trendy)</td></tr>
+            <tr><td><code>.field-label</code></td><td>font-size 13px · font-weight 600 · color var(--stability)</td></tr>
+            <tr><td><code>.field-hint</code></td><td>font-size 11.5px · color var(--text-muted)</td></tr>
+            <tr><td><code>.inlinehelp-btn</code></td><td>height 36px · border-radius 9999px · border rgba(0,0,0,0.15)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">Stat Card</h2>
+      <div class="section-txt">퍼블코드 버전 통계 카드. 기본 stat-card보다 큰 수치와 경고 상태 포함</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:12px; padding:8px 0; flex-wrap:wrap;">
+          <div class="stat-card-pc" style="min-width:140px;">
+            <p class="stat-label">공유한 코드</p>
+            <p class="stat-value">8</p>
+            <p class="stat-sub">퍼블 5 · 그룹 3</p>
+          </div>
+          <div class="stat-card-pc stat-warn" style="min-width:140px;">
+            <p class="stat-label">⚠️ 마감 임박</p>
+            <p class="stat-value">2</p>
+            <p class="stat-sub">D-3 이하 코드</p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>클래스</th><th>배경</th><th>수치 색상</th></tr></thead>
+          <tbody>
+            <tr><td>기본</td><td><code>.stat-card-pc</code></td><td>#fff</td><td>var(--stability)</td></tr>
+            <tr><td>경고</td><td><code>.stat-card-pc.stat-warn</code></td><td>#fff7ed</td><td>#ea580c</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 퍼블카드 -->
+    <div class="page" id="page-pubcode-card">
+      <div class="section-header">
+        <h1 class="page-title">퍼블카드</h1>
+        <p>퍼블코드를 시각적으로 표시하는 카드 컴포넌트 (v2)</p>
+      </div>
+      <hr>
+
+      <h2 class="section-title">PublCard v2</h2>
+      <div class="section-txt">border-radius 28px · 썸네일 + 가격 + 코드 + 액션 버튼 구조</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0;">
+          <div class="publcard-wrap">
+            <div class="publcard-thumb">
+              <div class="publcard-thumb-circle"></div>
+              <span class="publcard-status"><span class="publcard-status-dot"></span>퍼블코드 · 활성</span>
+              <span class="publcard-noauth">가입 없이 구매 ✓</span>
+              <div style="margin-top:auto;">
+                <p style="font-size:11px; color:rgba(255,255,255,0.6);">PRODUCT NAME</p>
+                <p style="font-size:16px; font-weight:700; color:#fff;">아크릴 키링 세트</p>
+              </div>
+            </div>
+            <div class="publcard-body">
+              <p class="publcard-price-label">PRICE</p>
+              <p class="publcard-price">37,800<small>원</small></p>
+            </div>
+            <div class="publcard-footer">
+              <div class="publcard-code-row">
+                <span>CODE</span>
+                <span class="publcard-code-val">PUBL-7K3M-A2</span>
+              </div>
+              <div class="publcard-actions">
+                <button class="publcard-btn-url">🔗 URL 복사</button>
+                <button class="publcard-btn-share">▷ 코드 공유</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td>카드 래퍼</td><td>border-radius <strong>28px</strong> · width 420px · box-shadow 0 20px 50px -20px rgba(0,0,0,0.2)</td></tr>
+            <tr><td>썸네일</td><td>aspect-ratio 4/3 · background #1A2B5F · 장식 원: var(--friendly) 110px</td></tr>
+            <tr><td>상태 배지</td><td>height 28px · border-radius 9999px · bg rgba(255,255,255,0.95)</td></tr>
+            <tr><td>미인증 배지</td><td>bg var(--friendly) · color var(--stability) · font-weight 800</td></tr>
+            <tr><td>가격</td><td>Montserrat 26px / 800 · letter-spacing -0.03em</td></tr>
+            <tr><td>액션 버튼</td><td>height 44px · border-radius 9999px · URL: outline / 공유: var(--trendy)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">CodeChip</h2>
+      <div class="section-txt">퍼블코드·그룹코드를 표시하는 인라인 칩. 오른쪽에 복사 버튼 포함</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:12px; flex-wrap:wrap; padding:8px 0;">
+          <div class="codechip codechip-pub">PUBL-7K3M-A2<button class="codechip-copy">복사</button></div>
+          <div class="codechip codechip-grp">GRP-2024-XZ7<button class="codechip-copy">복사</button></div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>종류</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
+          <tbody>
+            <tr><td>퍼블코드</td><td><code>.codechip-pub</code></td><td>#EEF0F8</td><td>var(--trendy)</td></tr>
+            <tr><td>그룹코드</td><td><code>.codechip-grp</code></td><td>#ECEEFF</td><td>#515382</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">D-day 배지</h2>
+      <div class="section-txt">코드 만료일까지 남은 일수를 표시하는 상태 배지. 긴급도에 따라 3단계 색상 분기</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:12px; align-items:center; padding:8px 0;">
+          <span class="dday-badge dday-safe">D-15</span>
+          <span class="dday-badge dday-warn">D-5</span>
+          <span class="dday-badge dday-urgent">D-1</span>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>클래스</th><th>배경</th><th>텍스트</th></tr></thead>
+          <tbody>
+            <tr><td>여유 (D-8+)</td><td><code>.dday-safe</code></td><td>var(--belief) #F0F1F6</td><td>var(--text-muted) #777</td></tr>
+            <tr><td>주의 (D-3~7)</td><td><code>.dday-warn</code></td><td>#FFF3CD</td><td>#856404</td></tr>
+            <tr><td>긴급 (D-0~2)</td><td><code>.dday-urgent</code></td><td>#FFE5E5</td><td>#DC3545</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 코드 등록 -->
+    <div class="page" id="page-pubcode-register">
+      <div class="section-header">
+        <h1 class="page-title">코드 등록</h1>
+        <p>코드 번호를 직접 입력해 퍼블코드 / 그룹코드를 등록하는 UI</p>
+      </div>
+      <hr>
+
+      <h2 class="section-title">PubSubLink (상단 탭 바)</h2>
+      <div class="section-txt">퍼블코드 프로토타입 상단 네이비 탭 바. 선택 상태에 따라 3가지 스타일로 분기</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0;">
+          <div class="pubsublink-bar">
+            <button class="pubsublink-btn type-navy">마이 코드</button>
+            <button class="pubsublink-btn type-purple">그룹코드 만들기</button>
+            <button class="pubsublink-btn type-default">퍼블코드 만들기</button>
+            <button class="pubsublink-btn">코드 등록</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>유형</th><th>클래스</th><th>해당 화면</th><th>선택 시 스타일</th></tr></thead>
+          <tbody>
+            <tr><td>Navy</td><td><code>.type-navy</code></td><td>마이 코드 · 그룹관리 · 마이코드 10+</td><td>bg var(--trendy) · border 2px solid #fff</td></tr>
+            <tr><td>Purple</td><td><code>.type-purple</code></td><td>그룹코드 만들기 · 대량 선택 · 그룹코드 종료</td><td>bg var(--attention)</td></tr>
+            <tr><td>Default</td><td><code>.type-default</code></td><td>퍼블코드 만들기 · 코드 등록</td><td>bg #fff · color var(--trendy)</td></tr>
+            <tr><td>비선택</td><td>—</td><td>모든 탭</td><td>color rgba(255,255,255,0.75)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">코드 등록 카드 (reg-card)</h2>
+      <div class="section-txt">코드 입력창에 JetBrains Mono 폰트 사용. 입력 내용에 따라 3가지 상태로 변환</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:20px; flex-wrap:wrap; padding:8px 0;">
+          <div class="reg-card">
+            <div class="reg-icon">📋</div>
+            <input class="reg-input" placeholder="코드 입력" readonly>
+            <button class="reg-btn disabled">코드 확인하기</button>
+          </div>
+          <div class="reg-card">
+            <div class="reg-icon">🔑</div>
+            <input class="reg-input" value="0RVTZDRDP6" readonly>
+            <span class="reg-badge pub" style="display:flex;"><span class="reg-badge-dot"></span>퍼블코드로 인식됨</span>
+            <button class="reg-btn pub">코드 확인하기</button>
+          </div>
+          <div class="reg-card">
+            <div class="reg-icon">🗂️</div>
+            <input class="reg-input" value="GRP2024A" readonly>
+            <span class="reg-badge grp" style="display:flex;"><span class="reg-badge-dot"></span>그룹코드로 인식됨</span>
+            <button class="reg-btn grp">그룹 상품 확인하기 →</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>입력창 border</th><th>배지</th><th>버튼 클래스</th></tr></thead>
+          <tbody>
+            <tr><td>미입력</td><td>2px rgba(0,0,0,0.10)</td><td>없음</td><td><code>.reg-btn.disabled</code></td></tr>
+            <tr><td>퍼블코드 인식</td><td>2px var(--trendy) on focus</td><td><code>.reg-badge.pub</code> #EEF0F8</td><td><code>.reg-btn.pub</code> var(--trendy)</td></tr>
+            <tr><td>그룹코드 인식</td><td>2px var(--trendy) on focus</td><td><code>.reg-badge.grp</code> #ECEEFF</td><td><code>.reg-btn.grp</code> var(--attention)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 대량 선택 UX -->
+    <div class="page" id="page-pubcode-bulk">
+      <div class="section-header">
+        <h1 class="page-title">대량 선택 UX</h1>
+        <p>퍼블코드 대량 선택 목록 아이템. 선택 시 border + 배경색 변경</p>
+      </div>
+      <hr>
+
+      <h2 class="section-title">체크박스</h2>
+      <div class="section-txt">SVG 방식 체크박스. 외부 이미지 의존성 없음</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:20px; padding:8px 0;">
+          <label class="cb-wrap">
+            <input class="cb-input" type="checkbox">
+            <span class="cb-box"></span>
+            <span class="cb-label">미선택 상태</span>
+          </label>
+          <label class="cb-wrap">
+            <input class="cb-input" type="checkbox" checked>
+            <span class="cb-box"></span>
+            <span class="cb-label">선택 상태</span>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>상태</th><th>cb-box 스타일</th></tr></thead>
+          <tbody>
+            <tr><td>미선택</td><td>border 1.5px solid var(--border) · bg #fff</td></tr>
+            <tr><td>선택</td><td>bg var(--trendy) · border-color var(--trendy) · 흰색 체크마크</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">대량 선택 목록 (bulk-item)</h2>
+      <div class="section-txt">2개 이상 선택 시 그룹코드 생성 가능. 선택 아이템은 보라색 배경으로 강조</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0; max-width:480px;">
+          <div class="bulk-header">
+            <div>
+              <p style="font-size:14px; font-weight:600;">묶을 퍼블코드 선택</p>
+              <p style="font-size:12px; color:var(--text-muted);">2개 이상 선택해야 그룹을 만들 수 있어요.</p>
+            </div>
+            <span class="bulk-count-badge">2개 선택</span>
+          </div>
+          <div style="display:flex; gap:6px; margin-bottom:12px;">
+            <button class="bulk-filter-tab on">전체</button>
+            <button class="bulk-filter-tab off">공개</button>
+            <button class="bulk-filter-tab off">비공개</button>
+          </div>
+          <div class="bulk-item on">
+            <label class="cb-wrap" style="flex-shrink:0;">
+              <input class="cb-input" type="checkbox" checked>
+              <span class="cb-box"></span>
+            </label>
+            <div class="bulk-emoji">🔑</div>
+            <div style="flex:1;">
+              <p class="bulk-title">봄 아크릴 키링</p>
+              <p class="bulk-spec">아크릴·양면·30×30mm</p>
+            </div>
+            <span class="bulk-price">12,000원</span>
+          </div>
+          <div class="bulk-item">
+            <label class="cb-wrap" style="flex-shrink:0;">
+              <input class="cb-input" type="checkbox">
+              <span class="cb-box"></span>
+            </label>
+            <div class="bulk-emoji">🏅</div>
+            <div style="flex:1;">
+              <p class="bulk-title">원형 뱃지 세트</p>
+              <p class="bulk-spec">44mm 원형·3개입</p>
+            </div>
+            <span class="bulk-price">7,200원</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td><code>.bulk-item</code></td><td>border-radius 16px · border 1.5px rgba(0,0,0,0.08)</td></tr>
+            <tr><td><code>.bulk-item.on</code></td><td>border-color var(--trendy) · bg var(--group-purple-soft) #ECEEFF</td></tr>
+            <tr><td><code>.bulk-count-badge</code></td><td>bg var(--group-purple-soft) · color var(--attention)</td></tr>
+            <tr><td><code>.bulk-filter-tab.on</code></td><td>bg var(--trendy) · color #fff</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 그룹코드 종료 -->
+    <div class="page" id="page-pubcode-groupend">
+      <div class="section-header">
+        <h1 class="page-title">그룹코드 종료</h1>
+        <p>그룹 내 일부·전체 코드가 종료됐을 때 상태를 표시하는 카드</p>
+      </div>
+      <hr>
+
+      <h2 class="section-title">그룹코드 종료 상태 카드 (grp-card)</h2>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="display:flex; gap:20px; flex-wrap:wrap; padding:8px 0;">
+          <div style="flex:1; min-width:260px;">
+            <p style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">일부 종료</p>
+            <div class="grp-card">
+              <div class="grp-strip">
+                <div class="grp-strip-dot"></div>
+                <span class="grp-strip-label">그룹 공유</span>
+                <span class="grp-strip-partial">· 일부 종료</span>
+              </div>
+              <div class="grp-items-row">
+                <div class="grp-tile">
+                  <div class="grp-thumb active-t">🌸</div>
+                  <p class="grp-tile-name">스티커팩</p>
+                </div>
+                <div class="grp-tile">
+                  <div class="grp-thumb soldout-t">
+                    <span>🌿</span>
+                    <div class="grp-so-overlay"><span class="grp-so-text">SOLD<br>OUT</span></div>
+                  </div>
+                  <p class="grp-tile-name">엽서 B</p>
+                </div>
+                <div class="grp-tile">
+                  <div class="grp-thumb active-t">🎀</div>
+                  <p class="grp-tile-name">키링</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="flex:1; min-width:260px;">
+            <p style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">전체 종료</p>
+            <div class="grp-card">
+              <div class="grp-strip">
+                <div class="grp-strip-dot" style="background:#dc2626;"></div>
+                <span class="grp-strip-label">그룹 공유</span>
+                <span class="grp-strip-all">· 전체 종료</span>
+              </div>
+              <div class="grp-items-row">
+                <div class="grp-tile">
+                  <div class="grp-thumb soldout-t">
+                    <span>🌸</span>
+                    <div class="grp-so-overlay"><span class="grp-so-text">SOLD<br>OUT</span></div>
+                  </div>
+                  <p class="grp-tile-name">스티커팩</p>
+                </div>
+                <div class="grp-tile">
+                  <div class="grp-thumb soldout-t">
+                    <span>🌿</span>
+                    <div class="grp-so-overlay"><span class="grp-so-text">SOLD<br>OUT</span></div>
+                  </div>
+                  <p class="grp-tile-name">엽서 B</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td><code>.grp-strip</code></td><td>bg var(--group-purple-soft) #ECEEFF · padding 12px 20px</td></tr>
+            <tr><td><code>.grp-strip-partial</code></td><td>color #c2410c (일부 종료)</td></tr>
+            <tr><td><code>.grp-strip-all</code></td><td>color #dc2626 (전체 종료)</td></tr>
+            <tr><td><code>.grp-thumb.active-t</code></td><td>bg var(--group-purple-soft)</td></tr>
+            <tr><td><code>.grp-thumb.soldout-t</code></td><td>bg rgba(0,0,0,0.08) · opacity 0.6 + SOLD OUT 오버레이</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 그룹관리 10+ -->
+    <div class="page" id="page-pubcode-groupmanage">
+      <div class="section-header">
+        <h1 class="page-title">그룹관리 10+</h1>
+        <p>그룹코드가 10개 이상일 때의 탭 스크롤 + 통계 카드 레이아웃</p>
+      </div>
+      <hr>
+
+      <h2 class="section-title">MyPublog LNB</h2>
+      <div class="section-txt">마이퍼블로그 사이드바 네비게이션. 너비 220px · PC 전용</div>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0;">
+          <nav class="lnb-wrap">
+            <div class="lnb-header">
+              <p style="font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;">MY PUBLOG</p>
+            </div>
+            <p class="lnb-section-label">코드 관리</p>
+            <a class="lnb-item active">마이 코드</a>
+            <a class="lnb-item highlight">그룹관리</a>
+            <a class="lnb-item">코드 등록</a>
+            <p class="lnb-section-label">계정</p>
+            <a class="lnb-item">주문 내역</a>
+            <a class="lnb-item">설정</a>
+          </nav>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td><code>.lnb-wrap</code></td><td>width 220px · bg #fff · PC 전용</td></tr>
+            <tr><td><code>.lnb-header</code></td><td>bg var(--trendy) · padding 16px 20px · color #fff</td></tr>
+            <tr><td><code>.lnb-item.active</code></td><td>color var(--trendy) · font-weight 600 · bg rgba(34,36,80,0.04)</td></tr>
+            <tr><td><code>.lnb-item.highlight</code></td><td>color var(--attention) #515382 · font-weight 600</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">그룹관리 탭 &amp; 통계 (grp-tab / grp-stat)</h2>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0; max-width:480px;">
+          <div class="grp-tab-bar">
+            <button class="grp-tab-pill act">GRP-A · 봄 세트</button>
+            <button class="grp-tab-pill inact">GRP-B · 여름</button>
+            <button class="grp-tab-pill inact">GRP-C · 가을</button>
+            <button class="grp-tab-pill inact">GRP-D · 겨울</button>
+            <button class="grp-tab-pill inact">GRP-E · 한정판</button>
+          </div>
+          <div class="grp-stat-row">
+            <div class="grp-stat">
+              <p class="grp-stat-val">3</p>
+              <p class="grp-stat-label">포함 코드</p>
+            </div>
+            <div class="grp-stat">
+              <p class="grp-stat-val">18</p>
+              <p class="grp-stat-label">공유 횟수</p>
+            </div>
+            <div class="grp-stat dday">
+              <p class="grp-stat-val">D-14</p>
+              <p class="grp-stat-label">만료까지</p>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td><code>.grp-tab-bar</code></td><td>overflow-x auto · scrollbar-width none (10개 이상 스크롤)</td></tr>
+            <tr><td><code>.grp-tab-pill.act</code></td><td>bg var(--trendy) · color #fff</td></tr>
+            <tr><td><code>.grp-tab-pill.inact</code></td><td>bg var(--belief) · color var(--text-body)</td></tr>
+            <tr><td><code>.grp-stat</code></td><td>bg var(--belief) · border-radius 12px · Montserrat 22px/800</td></tr>
+            <tr><td><code>.grp-stat.dday</code></td><td>bg #eef2ff · color var(--attention)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 마이코드 10+ -->
+    <div class="page" id="page-pubcode-mycode">
+      <div class="section-header">
+        <h1 class="page-title">마이코드 10+</h1>
+        <p>내 코드 / 받은 코드를 탭으로 구분하는 목록 UI</p>
+      </div>
+      <hr>
+
+      <h2 class="section-title">마이코드 목록 (mycode)</h2>
+      <div class="section-card">
+        <div class="card-label">Preview</div>
+        <div class="pc-guide" style="padding:8px 0; max-width:480px;">
+          <div class="mycode-main-tabs">
+            <button class="mycode-main-tab on">내 코드</button>
+            <button class="mycode-main-tab off">받은 코드</button>
+          </div>
+          <p class="mycode-section-label">활성 · 8개</p>
+          <div class="mycode-card">
+            <div class="mycode-thumb">🔑</div>
+            <div style="flex:1;">
+              <p class="mycode-title">봄 아크릴 키링</p>
+              <p class="mycode-meta">D-23 · 조회 18 · 구매 7</p>
+            </div>
+            <span class="mycode-status active-s">활성</span>
+            <span class="mycode-price">12,000원</span>
+          </div>
+          <p class="mycode-section-label">종료 · 4개</p>
+          <div class="mycode-card" style="opacity:.7;">
+            <div class="mycode-thumb" style="opacity:.5;">🧣</div>
+            <div style="flex:1;">
+              <p class="mycode-title">패브릭 포스터 소형</p>
+              <p class="mycode-meta">2026.03.31 종료 · 구매 14</p>
+            </div>
+            <span class="mycode-status ended-s">종료</span>
+            <span class="mycode-price" style="color:var(--text-muted);">18,000원</span>
+          </div>
+          <div class="mycode-card" style="opacity:.7;">
+            <div class="mycode-thumb" style="opacity:.5;">🎴</div>
+            <div style="flex:1;">
+              <p class="mycode-title">한정판 포카 12종</p>
+              <p class="mycode-meta">2026.04.25 품절 · 구매 88</p>
+            </div>
+            <span class="mycode-status soldout-s">품절</span>
+            <span class="mycode-price" style="color:var(--text-muted);">22,000원</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-label">Spec</div>
+        <table class="spec-table">
+          <thead><tr><th>요소</th><th>스펙</th></tr></thead>
+          <tbody>
+            <tr><td><code>.mycode-main-tab.on</code></td><td>color var(--trendy) · border-bottom 3px solid var(--trendy)</td></tr>
+            <tr><td><code>.mycode-card</code></td><td>border-radius 16px · border 1px var(--border)</td></tr>
+            <tr><td><code>.mycode-status.active-s</code></td><td>bg #dcfce7 · color #15803d</td></tr>
+            <tr><td><code>.mycode-status.ended-s</code></td><td>bg #f3f4f6 · color #6b7280</td></tr>
+            <tr><td><code>.mycode-status.soldout-s</code></td><td>bg #fef2f2 · color #dc2626</td></tr>
+            <tr><td><code>.mycode-price</code></td><td>Montserrat 14px / 800 · margin-left auto</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -1413,7 +2248,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">공식 슬로건 해석</h2>
       <div class="section-txt">BI 페이지 원문 기준</div>
@@ -1428,7 +2262,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">브랜드 포지셔닝</h2>
       <div class="section-card">
@@ -1495,7 +2328,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">로고 사용 규격</h2>
       <div class="section-card">
@@ -1592,7 +2424,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">CSS 분석 보조 컬러</h2>
       <div class="section-txt">사이트 실측 색상</div>
@@ -1608,7 +2439,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">그레이 스케일</h2>
       <div class="section-card">
@@ -1625,7 +2455,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">컬러 사용 원칙</h2>
       <div class="section-card">
@@ -1690,51 +2519,50 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">타입 스케일</h2>
       <div class="section-card">
         <div class="card-label">Type Scale</div>
-        <div class="bg-guide">
-          <table class="type-scale-table">
-            <tr><th style="width:180px;">사용처</th><th>예시</th><th style="width:200px;">스펙</th></tr>
+        <table class="spec-table">
+          <thead><tr><th style="width:160px;">사용처</th><th>예시</th><th style="width:220px;">스펙</th></tr></thead>
+          <tbody>
             <tr>
-              <td><div class="type-meta">H1 · 영문 대타이틀</div></td>
+              <td>H1 · 영문 대타이틀</td>
               <td><span style="font-family:Montserrat,sans-serif; font-size:40px; font-weight:900; color:var(--trendy); letter-spacing:-1.5px; line-height:1;">PUBLOG</span></td>
-              <td><div class="type-meta">Montserrat 900<br>48px+ · letter-spacing: -1.5px</div></td>
+              <td>Montserrat 900<br>48px+ · letter-spacing: -1.5px</td>
             </tr>
             <tr>
-              <td><div class="type-meta">H2 · 섹션 타이틀</div></td>
+              <td>H2 · 섹션 타이틀</td>
               <td><span style="font-family:Montserrat,sans-serif; font-size:26px; font-weight:800; color:var(--trendy);">BEST SELLER</span></td>
-              <td><div class="type-meta">Montserrat 800<br>28–32px</div></td>
+              <td>Montserrat 800<br>28–32px</td>
             </tr>
             <tr>
-              <td><div class="type-meta">H3 · 상품명</div></td>
+              <td>H3 · 상품명</td>
               <td><span style="font-family:'Noto Sans KR'; font-size:17px; font-weight:700; color:var(--stability);">포토카드 · 아크릴 키링</span></td>
-              <td><div class="type-meta">Noto Sans KR 700<br>16–20px</div></td>
+              <td>Noto Sans KR 700<br>16–20px</td>
             </tr>
             <tr>
-              <td><div class="type-meta">Body · 본문</div></td>
+              <td>Body · 본문</td>
               <td><span style="font-size:13px; color:var(--text-body);">1개부터 대량까지 맞춤 제작 · 무료 샘플 · 대량할인</span></td>
-              <td><div class="type-meta">Noto Sans KR 400<br>13–14px</div></td>
+              <td>Noto Sans KR 400<br>13–14px</td>
             </tr>
             <tr>
-              <td><div class="type-meta">Price · 가격</div></td>
+              <td>Price · 가격</td>
               <td><span style="font-family:Montserrat,sans-serif; font-size:22px; font-weight:800; color:var(--trendy);">6,400원~</span></td>
-              <td><div class="type-meta">Montserrat 800<br>18–24px · 반드시 ~포함</div></td>
+              <td>Montserrat 800<br>18–24px · 반드시 ~포함</td>
             </tr>
             <tr>
-              <td><div class="type-meta">GNB 메뉴</div></td>
+              <td>GNB 메뉴</td>
               <td><span style="font-family:Montserrat,sans-serif; font-size:13px; color:#333; letter-spacing:0;">사진인화 · 스티커 · 아크릴</span></td>
-              <td><div class="type-meta">Montserrat 400<br>13px · letter-spacing: 0 !</div></td>
+              <td>Montserrat 400<br>13px · letter-spacing: 0 !</td>
             </tr>
             <tr>
-              <td><div class="type-meta">Caption · 주석</div></td>
+              <td>Caption · 주석</td>
               <td><span style="font-size:11px; font-weight:300; color:var(--text-light);">평일 9:30-17:00 · 주말·공휴일 휴무</span></td>
-              <td><div class="type-meta">Noto Sans KR 300<br>10–12px · color #999</div></td>
+              <td>Noto Sans KR 300<br>10–12px · color #999</td>
             </tr>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -1780,7 +2608,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">② GNB 상품리스트 영역 태그</h2>
       <div class="section-txt">GNB 드롭다운 내 상품명 옆 인라인 배지</div>
@@ -1806,7 +2633,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">③ 상품영역 리스트 태그</h2>
       <div class="section-txt">상품 카드 및 상품명 인라인 배지</div>
@@ -1832,14 +2658,13 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">④ 상품 배지 — PRODUCT BADGES</h2>
       <div class="section-txt">상품 리스트·상세 페이지에 노출되는 원형 아이콘 배지. 한 상품에 최대 2개까지 조합 가능</div>
       <div class="section-card">
         <div class="card-label">Product Badges · 08 TYPES</div>
         <div class="bg-guide">
-          <div style="display:flex; flex-wrap:nowrap; gap:20px; padding:28px; background:var(--belief); border-radius:var(--radius); border:1px solid var(--border); overflow-x:auto;">
+          <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:flex-end; padding:8px 0; overflow-x:auto;">
             <div style="text-align:center; flex-shrink:0;">
               <img src="https://www.publog.co.kr/gnb/new/l_kc_mark.png?t=2" alt="KC 인증" style="width:45px; height:45px; object-fit:contain; display:block; margin:0 auto;">
               <div style="font-size:11px; font-weight:700; color:var(--trendy); margin-top:8px;">KC 인증</div>
@@ -1910,7 +2735,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </table>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">② 장바구니 영역 버튼</h2>
       <div class="section-card">
@@ -1927,15 +2751,14 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           <table class="spec-table">
             <thead><tr><th>버튼</th><th>클래스</th><th>기본 색상</th><th>Hover</th></tr></thead>
             <tbody>
-              <tr><td><button class="btn-delete" style="font-size:11px; padding:5px 12px;">선택삭제</button></td><td><code>.btn-delete</code></td><td>bg <strong>#e9e9e9</strong> / color #888</td><td>bg #d5d5d5</td></tr>
-              <tr><td><button class="btn-multi" style="font-size:11px; padding:5px 12px;">다중배송 신청하기</button></td><td><code>.btn-multi</code></td><td>bg #fff / border <strong>#ccc</strong> / color #333</td><td>bg #f5f5f5, border #aaa</td></tr>
-              <tr><td><button class="btn-share-cart" style="font-size:11px; padding:5px 12px;">공유하기</button></td><td><code>.btn-share-cart</code></td><td>bg #fff / border <strong>#222450</strong> / color #222450</td><td>bg #f0f1f6</td></tr>
-              <tr><td><button class="btn-order-cart" style="font-size:11px; padding:5px 18px;">주문하기</button></td><td><code>.btn-order-cart</code></td><td>bg <strong>#222450</strong> / color #fff</td><td>bg #3a3f7a</td></tr>
+              <tr><td><button class="btn-delete" style="height:auto; font-size:11px; padding:5px 12px;">선택삭제</button></td><td><code>.btn-delete</code></td><td>bg <strong>#e9e9e9</strong> / color #888</td><td>bg #d5d5d5</td></tr>
+              <tr><td><button class="btn-multi" style="height:auto; font-size:11px; padding:5px 12px;">다중배송 신청하기</button></td><td><code>.btn-multi</code></td><td>bg #fff / border <strong>#ccc</strong> / color #333</td><td>bg #f5f5f5, border #aaa</td></tr>
+              <tr><td><button class="btn-share-cart" style="height:auto; font-size:11px; padding:5px 12px;">공유하기</button></td><td><code>.btn-share-cart</code></td><td>bg #fff / border <strong>#222450</strong> / color #222450</td><td>bg #f0f1f6</td></tr>
+              <tr><td><button class="btn-order-cart" style="height:auto; font-size:11px; padding:5px 18px;">주문하기</button></td><td><code>.btn-order-cart</code></td><td>bg <strong>#222450</strong> / color #fff</td><td>bg #3a3f7a</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">③ 상품 상세 페이지 버튼</h2>
       <div class="section-card">
@@ -1958,29 +2781,72 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </table>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">④ 검색 컴포넌트</h2>
-      <div class="section-txt">헤더 검색창 — 상품명 / 테마샵 / 퍼블코드 3가지 탭 모드</div>
+      <div class="section-txt">헤더 검색창 — 상품명 / 테마샵 / 퍼블코드 3가지 탭 모드 + 자동완성</div>
       <div class="section-card">
         <div class="card-label">Search</div>
         <div class="bg-guide">
-          <div style="padding:24px; background:var(--belief); border-radius:var(--radius); border:1px solid var(--border); margin-bottom:16px;">
+          <!-- 상태 전환 버튼 -->
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px;">
+            <button class="s-state-btn s-on" onclick="showSearchState('tab-menu', this)">① 상품명 탭메뉴</button>
+            <button class="s-state-btn" onclick="showSearchState('auto-product', this)">② 상품명 자동완성</button>
+            <button class="s-state-btn" onclick="showSearchState('theme', this)">③ 테마샵</button>
+            <button class="s-state-btn" onclick="showSearchState('auto-theme', this)">④ 테마샵 자동완성</button>
+            <button class="s-state-btn" onclick="showSearchState('pubcode', this)">⑤ 퍼블코드</button>
+          </div>
+          <div style="background:var(--belief); padding:32px 28px 80px; border-radius:var(--radius); border:1px solid var(--border);">
             <div class="search-demo-wrap">
-              <div class="search_wrap">
-                <div class="searching_wrap">
+              <!-- 검색바 -->
+              <div class="search_wrap" style="margin-left:0;">
+                <div class="searching_wrap" style="width:100%;">
                   <div class="search_box">
                     <div class="search_select_wrap">
-                      <button class="select_fake">상품명</button>
+                      <button class="select_fake" id="s-select-fake">
+                        <span id="s-tab-text">상품명</span>
+                      </button>
+                      <ul class="select_fake_list" id="s-drop-tab" style="display:none;">
+                        <li class="selected">상품명</li>
+                        <li>테마샵</li>
+                        <li>퍼블코드</li>
+                      </ul>
                     </div>
-                    <input class="input_search" placeholder="탁월한 명암과 색감! 꼼꼼한 고급인화" readonly>
+                    <input class="input_search" id="s-input" placeholder="탁월한 명암과 색감! 꼼꼼한 고급인화" readonly>
                   </div>
                   <button class="icon_search"></button>
                 </div>
               </div>
+              <!-- 자동완성 드롭다운 (② ④ 상태) -->
+              <div class="search-auto-dropdown" id="s-drop-auto" style="display:none;">
+                <div class="search-auto-row">
+                  <div class="search-auto-picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                  <span class="search-auto-name">엽서</span><span class="search-auto-tag">테마샵 ↗</span>
+                </div>
+                <div class="search-auto-row">
+                  <div class="search-auto-picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                  <span class="search-auto-name">작가전용관</span><span class="search-auto-tag">테마샵 ↗</span>
+                </div>
+                <div class="search-auto-row">
+                  <div class="search-auto-picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                  <span class="search-auto-name">아크릴키링</span><span class="search-auto-tag">테마샵 ↗</span>
+                </div>
+                <div class="search-auto-row">
+                  <div class="search-auto-picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                  <span class="search-auto-name">졸업몰</span><span class="search-auto-tag">테마샵 ↗</span>
+                </div>
+                <div class="search-auto-row">
+                  <div class="search-auto-picon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                  <span class="search-auto-name">겨울상품</span><span class="search-auto-tag">테마샵 ↗</span>
+                </div>
+                <div class="search-auto-recent">
+                  <span class="search-auto-recent-name">키링</span>
+                  <span class="search-auto-close">✕</span>
+                </div>
+                <div class="search-auto-footer"><span class="search-auto-clear">전체 삭제</span></div>
+              </div>
             </div>
           </div>
-          <table class="spec-table">
+          <table class="spec-table" style="margin-top:16px;">
             <thead><tr><th>상태</th><th>탭 표시</th><th>placeholder</th><th>드롭다운</th></tr></thead>
             <tbody>
               <tr><td>① 상품명 탭메뉴 열림</td><td>상품명 ▲</td><td>탁월한 명암과 색감! 꼼꼼한 고급인화</td><td>상품명 ✓ / 테마샵 / 퍼블코드</td></tr>
@@ -1992,7 +2858,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </table>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">⑤ 상품 카드 패턴</h2>
       <div class="section-card">
@@ -2055,7 +2920,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">그리드 규격</h2>
       <div class="section-card">
@@ -2126,7 +2990,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">소셜 로그인 &amp; 앱 마켓</h2>
       <div class="section-card">
@@ -2157,7 +3020,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
 
       <h2 class="section-title">판매 채널</h2>
       <div class="section-card">
@@ -2243,7 +3105,40 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
         </div>
       </div>
-      <hr>
+
+      <h2 class="section-title">소셜 로그인 버튼</h2>
+      <div class="section-txt">소셜 로그인 버튼 — 09. 채널 기준</div>
+      <div class="section-card">
+        <div class="card-label">Social Login Buttons</div>
+        <div class="bg-guide">
+          <div style="display:flex; gap:16px; align-items:center; padding:8px 0 20px;">
+            <button style="width:40px; height:40px; border-radius:50%; background:#1ec800; border:none; color:#fff; font-weight:800; font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center;">N</button>
+            <button style="width:40px; height:40px; border-radius:50%; background:#000000; border:none; color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+              <svg width="14" height="17" viewBox="0 0 14 17" fill="currentColor"><path d="M11.7 9.08c-.02-2.15 1.75-3.19 1.83-3.24-1-1.47-2.56-1.67-3.1-1.69-1.32-.14-2.58.79-3.25.79-.67 0-1.7-.77-2.8-.75C2.87 4.21 1.64 5.01.91 6.23-.6 8.71.57 12.43 2.01 14.5c.72 1.03 1.57 2.18 2.69 2.14 1.08-.04 1.48-.7 2.79-.7 1.3 0 1.66.7 2.8.68 1.16-.02 1.9-1.05 2.61-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.38-3.03zM9.5 2.78C10.11 2.02 10.53 1 10.4 0 9.52.04 8.44.58 7.81 1.33c-.57.66-1.07 1.72-.94 2.73.98.08 1.98-.5 2.63-1.28z"/></svg>
+            </button>
+            <button style="width:40px; height:40px; border-radius:50%; background:#ffffff; border:1px solid #d9d9d9; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v8.7h12.4c-.5 2.7-2.1 4.9-4.4 6.4v5.3h7.1c4.2-3.8 6.6-9.5 6.6-15.8z"/><path fill="#34A853" d="M24 47c6.3 0 11.5-2.1 15.3-5.6l-7.1-5.3c-2.1 1.4-4.7 2.2-8.2 2.2-6.3 0-11.7-4.3-13.6-10H3v5.5C6.7 42.2 14.8 47 24 47z"/><path fill="#FBBC04" d="M10.4 28.3c-.5-1.4-.8-2.9-.8-4.3s.3-2.9.8-4.3V14.2H3C1.4 17.3.5 20.6.5 24s.9 6.7 2.5 9.8l7.4-5.5z"/><path fill="#EA4335" d="M24 9.7c3.5 0 6.7 1.2 9.2 3.6l6.8-6.8C35.5 2.8 30.3.5 24 .5 14.8.5 6.7 5.3 3 13.7l7.4 5.5C12.3 13.9 17.7 9.7 24 9.7z"/></svg>
+            </button>
+          </div>
+          <table class="spec-table">
+              <thead><tr><th>플랫폼</th><th>배경색</th><th>텍스트 / 아이콘</th><th>테두리</th><th>크기</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><button style="width:36px; height:36px; border-radius:50%; background:#1ec800; border:none; color:#fff; font-weight:800; font-size:13px; cursor:default;">N</button></td>
+                  <td><strong>#1ec800</strong></td><td>흰색 "N" · font-weight 800</td><td>없음</td><td>40 × 40px 원형</td>
+                </tr>
+                <tr>
+                  <td><button style="width:36px; height:36px; border-radius:50%; background:#000; border:none; color:#fff; font-size:11px; cursor:default; display:inline-flex; align-items:center; justify-content:center;"><svg width="11" height="14" viewBox="0 0 14 17" fill="currentColor"><path d="M11.7 9.08c-.02-2.15 1.75-3.19 1.83-3.24-1-1.47-2.56-1.67-3.1-1.69-1.32-.14-2.58.79-3.25.79-.67 0-1.7-.77-2.8-.75C2.87 4.21 1.64 5.01.91 6.23-.6 8.71.57 12.43 2.01 14.5c.72 1.03 1.57 2.18 2.69 2.14 1.08-.04 1.48-.7 2.79-.7 1.3 0 1.66.7 2.8.68 1.16-.02 1.9-1.05 2.61-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.38-3.03zM9.5 2.78C10.11 2.02 10.53 1 10.4 0 9.52.04 8.44.58 7.81 1.33c-.57.66-1.07 1.72-.94 2.73.98.08 1.98-.5 2.63-1.28z"/></svg></button></td>
+                  <td><strong>#000000</strong></td><td>흰색 Apple SVG</td><td>없음</td><td>40 × 40px 원형</td>
+                </tr>
+                <tr>
+                  <td><button style="width:36px; height:36px; border-radius:50%; background:#fff; border:1px solid #d9d9d9; cursor:default; display:inline-flex; align-items:center; justify-content:center;"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v8.7h12.4c-.5 2.7-2.1 4.9-4.4 6.4v5.3h7.1c4.2-3.8 6.6-9.5 6.6-15.8z"/><path fill="#34A853" d="M24 47c6.3 0 11.5-2.1 15.3-5.6l-7.1-5.3c-2.1 1.4-4.7 2.2-8.2 2.2-6.3 0-11.7-4.3-13.6-10H3v5.5C6.7 42.2 14.8 47 24 47z"/><path fill="#FBBC04" d="M10.4 28.3c-.5-1.4-.8-2.9-.8-4.3s.3-2.9.8-4.3V14.2H3C1.4 17.3.5 20.6.5 24s.9 6.7 2.5 9.8l7.4-5.5z"/><path fill="#EA4335" d="M24 9.7c3.5 0 6.7 1.2 9.2 3.6l6.8-6.8C35.5 2.8 30.3.5 24 .5 14.8.5 6.7 5.3 3 13.7l7.4 5.5C12.3 13.9 17.7 9.7 24 9.7z"/></svg></button></td>
+                  <td><strong>#ffffff</strong></td><td>Google G 컬러 SVG</td><td>1px solid <strong>#d9d9d9</strong></td><td>40 × 40px 원형</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
 
       <h2 class="section-title">컴포넌트 스펙</h2>
       <div class="section-card">
@@ -2281,21 +3176,57 @@ const pageMap = {
   'bg05': '태그 & 뱃지', 'bg06': 'UI 컴포넌트',
   'bg07': '레이아웃 구조', 'bg08': '채널 & SNS',
   'bg09': '로그인 모달',
-  'pubcode': '퍼블코드',
+  'pubcode-form': '폼 & 입력', 'pubcode-card': '퍼블카드',
+  'pubcode-register': '코드 등록', 'pubcode-bulk': '대량 선택 UX',
+  'pubcode-groupend': '그룹코드 종료', 'pubcode-groupmanage': '그룹관리 10+',
+  'pubcode-mycode': '마이코드 10+',
   'a01': '가이드 안내',
   'am1': '클로드 코드로 작업하기', 'am2': '외부 도구 업데이트'
 };
 
 let currentPage = 's01';
 
+function showSearchState(state, btn) {
+  const tabText = document.getElementById('s-tab-text');
+  const input = document.getElementById('s-input');
+  const dropTab = document.getElementById('s-drop-tab');
+  const dropAuto = document.getElementById('s-drop-auto');
+  const selectFake = document.getElementById('s-select-fake');
+  dropTab.style.display = 'none';
+  dropAuto.style.display = 'none';
+  if (selectFake) selectFake.classList.remove('open');
+  document.querySelectorAll('.s-state-btn').forEach(b => b.classList.remove('s-on'));
+  if (btn) btn.classList.add('s-on');
+  if (state === 'tab-menu') {
+    tabText.textContent = '상품명';
+    input.placeholder = '탁월한 명암과 색감! 꼼꼼한 고급인화';
+    dropTab.style.display = 'block';
+    if (selectFake) selectFake.classList.add('open');
+  } else if (state === 'auto-product') {
+    tabText.textContent = '상품명';
+    input.placeholder = '다양한 상품을 쉽게 찾아보세요.';
+    dropAuto.style.display = 'block';
+  } else if (state === 'theme') {
+    tabText.textContent = '테마샵';
+    input.placeholder = '테마검색';
+  } else if (state === 'auto-theme') {
+    tabText.textContent = '테마샵';
+    input.placeholder = '다양한 상품을 쉽게 찾아보세요.';
+    dropAuto.style.display = 'block';
+  } else if (state === 'pubcode') {
+    tabText.textContent = '퍼블코드';
+    input.placeholder = '퍼블코드를 입력해주세요';
+  }
+}
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item, .nav-sub').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item, .nav-sub, .nav-sub-sub').forEach(n => n.classList.remove('active'));
 
   const page = document.getElementById('page-' + id);
   if (page) page.classList.add('active');
 
-  document.querySelectorAll('.nav-item, .nav-sub').forEach(n => {
+  document.querySelectorAll('.nav-item, .nav-sub, .nav-sub-sub').forEach(n => {
     if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(`'${id}'`)) {
       n.classList.add('active');
     }
@@ -2316,6 +3247,14 @@ function toggleGroup(header) {
       break;
     }
     next = next.nextElementSibling;
+  }
+}
+
+function toggleSubGroup(header) {
+  header.classList.toggle('open');
+  const items = header.nextElementSibling;
+  if (items && items.classList.contains('nav-sub-items')) {
+    items.style.display = header.classList.contains('open') ? '' : 'none';
   }
 }
 
