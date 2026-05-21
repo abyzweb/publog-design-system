@@ -580,28 +580,25 @@
   width: 18px;
   height: 18px;
   border-radius: 4px;
-  border: 1.5px solid var(--border);
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  transition: all 0.15s;
+  display: grid;
+  place-items: center;
+}
+
+.cb-input:not(:checked) + .cb-box {
+  background-image: url('https://www.bizfactory.co.kr/include/img/login/checkbox.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: 1.5px solid #d1d5db;
+  background-color: #fff;
 }
 
 .cb-input:checked + .cb-box {
-  background: var(--trendy);
-  border-color: var(--trendy);
-}
-
-.cb-input:checked + .cb-box::after {
-  content: '';
-  display: block;
-  width: 10px;
-  height: 6px;
-  border-left: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  transform: rotate(-45deg) translateY(-1px);
+  background-color: #222450;
+  background-image: url('https://www.bizfactory.co.kr/include/img/login/checkbox_on.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
 }
 
 .cb-label { font-size: 13px; color: var(--text-body); }
@@ -876,7 +873,7 @@
   position: relative;
 }
 
-.grp-thumb.active-t  { background: var(--group-purple-soft); }
+.grp-thumb.active-t  { background: var(--belief); }
 .grp-thumb.soldout-t { background: rgba(0,0,0,0.08); opacity: 0.6; }
 
 /* SOLD OUT 오버레이 */
