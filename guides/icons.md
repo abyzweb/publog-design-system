@@ -175,4 +175,4 @@
 | 영문명 | 한글명 | 형식 | 이미지 URL |
 |--------|--------|------|------------|
 | share-publog | 공유 | PNG | `https://stay10.publog.co.kr/sub_order/img/share.png?t=1` |
-| group-publog | 그룹코드 | PNG | `https://stay10.publog.co.kr/sub_order/img/share_group.png` |
+| group-publog | 그룹코드 | PNG | 기본: `https://www.publog.co.kr/sub_order/img/share_group.png` / 블랙: `https://www.publog.co.kr/sub_order/img/share_group_b.png` / 화이트: `https://www.publog.co.kr/sub_order/img/share_group_w.png` |
