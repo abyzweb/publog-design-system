@@ -161,6 +161,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: var(--text-body); line-he
 | 레이아웃·간격·컨테이너 | `https://raw.githubusercontent.com/abyzweb/publog-design-system/main/guides/layout.md` |
 | 버튼·검색·카드·GNB 등 일반 컴포넌트 | `https://raw.githubusercontent.com/abyzweb/publog-design-system/main/guides/components.md` |
 | 퍼블코드 전용 컴포넌트 (SubTab·CodeChip·PublCard 등) | `https://raw.githubusercontent.com/abyzweb/publog-design-system/main/guides/publog-code.md` |
+| 아이콘·SVG·아이콘 라이브러리 | `https://raw.githubusercontent.com/abyzweb/publog-design-system/main/guides/icons.md` |
 
 - 여러 유형이 섞인 요청이면 해당 파일을 모두 불러온다
 - 불러온 내용이 이 파일의 내용과 충돌하면 **불러온 파일을 우선**한다
