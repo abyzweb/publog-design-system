@@ -110,27 +110,27 @@
 
 코드 만료일까지 남은 일수를 표시하는 상태 배지. 3단계 긴급도로 색상 분기.
 
-| 상태 | 클래스 | 배경 | 텍스트 |
+| 조건 | 클래스 | 배경 | 텍스트 |
 |------|--------|------|--------|
-| 여유 (D-8+) | `.dday-safe` | `var(--belief)` #F0F1F6 | `var(--text-muted)` #777 |
-| 주의 (D-3~7) | `.dday-warn` | `#FFF3CD` | `#856404` |
-| 긴급 (D-0~2) | `.dday-urgent` | `#FFE5E5` | `#DC3545` |
+| D-day > 7 (여유) | `.dday-safe` | `#f0fdf4` | `#15803d` |
+| D-day ≤ 7 (주의) | `.dday-warn` | `#fffbeb` | `#b45309` |
+| D-day ≤ 3 (긴급) | `.dday-urgent` | `#fff1f2` | `#e11d48` |
 
 ```css
 .dday-badge {
   display: inline-flex;
   align-items: center;
-  height: 20px;
+  height: 24px;
   padding: 0 8px;
-  border-radius: 4px;
+  border-radius: 9999px;
   font-size: 10px;
   font-weight: 700;
   white-space: nowrap;
 }
 
-.dday-safe   { background: var(--belief); color: var(--text-muted); }
-.dday-warn   { background: #FFF3CD; color: #856404; }
-.dday-urgent { background: #FFE5E5; color: #DC3545; }
+.dday-safe   { background: #f0fdf4; color: #15803d; }
+.dday-warn   { background: #fffbeb; color: #b45309; }
+.dday-urgent { background: #fff1f2; color: #e11d48; }
 ```
 
 ```html
@@ -483,6 +483,10 @@
   cursor: pointer;
 }
 
+/* 열린 상태 */
+.inlinehelp-btn.open-pub { background: #FFF9D6; border-color: var(--trendy); }
+.inlinehelp-btn.open-grp { background: #ECEEFF; border-color: #515382; }
+
 .inlinehelp-icon {
   width: 16px;
   height: 16px;
@@ -505,9 +509,17 @@
   <p class="field-hint">💡 받는 사람에게 표시되는 이름이에요</p>
 </div>
 
-<!-- InlineHelp -->
+<!-- InlineHelp 닫힌 상태 -->
 <button class="inlinehelp-btn">
   <span class="inlinehelp-icon">?</span> 퍼블코드란?
+</button>
+<!-- InlineHelp 열린 상태 — 퍼블코드 -->
+<button class="inlinehelp-btn open-pub">
+  <span class="inlinehelp-icon">?</span> 퍼블코드란?
+</button>
+<!-- InlineHelp 열린 상태 — 그룹코드 -->
+<button class="inlinehelp-btn open-grp">
+  <span class="inlinehelp-icon">?</span> 그룹코드란?
 </button>
 ```
 
@@ -602,6 +614,19 @@
 }
 
 .cb-label { font-size: 13px; color: var(--text-body); }
+
+/* 인덴트 — 자식/손자 항목 */
+.cb-wrap.cb-i1 { padding-left: 28px; }
+.cb-wrap.cb-i2 { padding-left: 52px; }
+
+/* 링크 텍스트 */
+.cb-link { color: var(--attention); text-decoration: underline; }
+
+/* (필수) 라벨 */
+.cb-req { font-size: 11px; color: var(--text-muted); }
+
+/* 구분선 */
+.cb-sep { height: 1px; background: var(--border); margin-left: 28px; }
 ```
 
 ```html

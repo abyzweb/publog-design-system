@@ -93,15 +93,18 @@ FOOTER
   --friendly-hover:  #f0c000;
   --btn-make-hover:  #4e58c2;
 
+  /* ── 배경 ── */
+  --paper: #FAFAF7;  /* 페이지 기본 배경 */
+
   /* ── 퍼블코드 ── */
   --group-purple-soft: #ECEEFF;
   --radius: 12px;
 
   /* ── D-day ── */
-  --dday-warn-bg:    #FFF3CD;
-  --dday-warn-tx:    #856404;
-  --dday-urgent-bg:  #FFE5E5;
-  --dday-urgent-tx:  #DC3545;
+  --dday-warn-bg:    #fffbeb;
+  --dday-warn-tx:    #b45309;
+  --dday-urgent-bg:  #fff1f2;
+  --dday-urgent-tx:  #e11d48;
 
   /* ── 소셜 버튼 ── */
   --naver:      #1ec800;
@@ -110,8 +113,8 @@ FOOTER
 }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: #FFFFFF;
+  font-family: "Montserrat", "YoonGothicPro760", sans-serif;
+  background: var(--paper);
   color: var(--text-body);
   line-height: 1.6;
 }
@@ -132,8 +135,8 @@ body {
 
 | 구분 | URL |
 |------|-----|
-| 기본 로고 (밝은 배경) | `https://www.publog.co.kr/main_2025/img/logo.png` |
-| 역상 로고 (어두운 배경) | `https://www.publog.co.kr/main_2025/img/logo_w.png` |
+| 기본 로고 (흰색·밝은 배경) | `https://www.publog.co.kr/main_2025/img/logo.png?t=1` |
+| 역상 로고 (어두운 배경 `#222450`) | `https://www.publog.co.kr/main_2025/img/logo_w.png?t=1` |
 
 - 헤더 내 너비: `130px`
 - 최소 여백: 로고 외곽 상하좌우 16px 이상
