@@ -1272,7 +1272,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
     </div>
     <div class="nav-items">
       <div class="nav-sub" onclick="showPage('a01')">가이드 안내</div>
-      <div class="nav-sub" onclick="showPage('am1')">클로드 코드로 작업하기</div>
+      <div class="nav-sub" onclick="showPage('am1')">작업 환경 구조</div>
       <div class="nav-sub" onclick="showPage('am2')">외부 도구 업데이트</div>
     </div>
   </div>
@@ -2512,6 +2512,17 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         </table>
       </div>
 
+    </div>
+
+    <!-- ─── 관리자 · 관리 방법 ─── -->
+
+    <!-- am1: 작업 환경 구조 -->
+    <div class="page" id="page-am1">
+      <div class="section-header">
+        <h1 class="page-title">작업 환경 구조</h1>
+      </div>
+      <hr>
+
       <h2 class="section-title">관리자 작업 흐름</h2>
       <div class="section-card">
         <div class="step-list">
@@ -2533,7 +2544,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
               <div class="step-title">클로드 코드로 작업하기</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">클로드 코드에서 어드민 폴더를 열고 HTML 파일 스타일 검토 / 컴포넌트 추가·수정<br>(처음 설치는 <code>관리 방법 &gt; 클로드 코드로 작업하기</code>에서 안내해요)</div>
+              <div class="step-desc">클로드 코드에서 어드민 폴더를 열고 HTML 파일 스타일 검토 / 컴포넌트 추가·수정<br>(처음 설치는 <code>가이드 안내 &gt; 처음 시작하기</code>에서 안내해요)</div>
             </div>
           </div>
           <div class="step-item">
@@ -2591,17 +2602,6 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         <div class="callout-card-title">GitHub가 뭐예요?</div>
         <div class="callout-card-desc">파일을 인터넷에 저장·배포하는 클라우드 저장소예요.<br /> 클로드가 이 저장소에서 디자인 가이드를 자동으로 불러와 항상 최신 상태를 유지해요.<br />연동은 이미 완료되어 있어서 별도 세팅 없이 파일 수정 후 클로드 코드에 작업을 맡기면 자동으로 처리돼요.</div>
       </div>
-
-    </div>
-
-    <!-- ─── 관리자 · 관리 방법 ─── -->
-
-    <!-- am1: 클로드 코드로 작업하기 -->
-    <div class="page" id="page-am1">
-      <div class="section-header">
-        <h1 class="page-title">클로드 코드로 작업하기</h1>
-      </div>
-      <hr>
 
       <div class="callout-card">
         <div class="callout-card-title">로그 저장을 잊지 마세요</div>
@@ -12318,7 +12318,7 @@ const pageMap = {
   'pubcode-groupend': '그룹코드 종료', 'pubcode-groupmanage': '그룹관리 10+',
   'pubcode-mycode': '마이코드 10+',
   'a01': '가이드 안내',
-  'am1': '클로드 코드로 작업하기', 'am2': '외부 도구 업데이트'
+  'am1': '작업 환경 구조', 'am2': '외부 도구 업데이트'
 };
 
 let currentPage = 's01';
