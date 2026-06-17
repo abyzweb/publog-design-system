@@ -1343,7 +1343,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
           <div>
             <div class="check-card-title">대화창(세션)을 최적화해 관리해주세요</div>
-            <div class="check-card-desc">대화가 길어지면 Claude가 이전 내용을 자동으로 압축(컴팩트)해요.<br />이 과정에서 작업 내용이 소실되거나 가이드 참조가 약해질 수 있어요.<br /> 대화창에 내용이 길어지면 HTML을 내 컴퓨터에 저장해두고, 새 대화창에 파일을 첨부해 이어 작업하세요.</div>
+            <div class="check-card-desc">대화가 길어지면 클로드가 이전 내용을 자동으로 압축(컴팩트)해요.<br />이 과정에서 작업 내용이 소실되거나 가이드 참조가 약해질 수 있어요.<br /> 대화창에 내용이 길어지면 HTML을 내 컴퓨터에 저장해두고, 새 대화창에 파일을 첨부해 이어 작업하세요.</div>
           </div>
         </div>
       </div>
@@ -2474,7 +2474,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
               <div class="step-title">클로드 코드로 작업하기</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">Claude Code에서 어드민 폴더를 열고 HTML 파일 스타일 검토 / 컴포넌트 추가·수정<br>(처음 설치는 <code>관리 방법 &gt; 클로드 코드로 작업하기</code>에서 안내해요)</div>
+              <div class="step-desc">클로드 코드에서 어드민 폴더를 열고 HTML 파일 스타일 검토 / 컴포넌트 추가·수정<br>(처음 설치는 <code>관리 방법 &gt; 클로드 코드로 작업하기</code>에서 안내해요)</div>
             </div>
           </div>
           <div class="step-item">
@@ -2530,7 +2530,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 
       <div class="callout-card">
         <div class="callout-card-title">GitHub가 뭐예요?</div>
-        <div class="callout-card-desc">파일을 인터넷에 저장·배포하는 클라우드 저장소예요.<br /> Claude가 이 저장소에서 디자인 가이드를 자동으로 불러와 항상 최신 상태를 유지해요.<br />연동은 이미 완료되어 있어서 별도 세팅 없이 파일 수정 후 Claude Code에 작업을 맡기면 자동으로 처리돼요.</div>
+        <div class="callout-card-desc">파일을 인터넷에 저장·배포하는 클라우드 저장소예요.<br /> 클로드가 이 저장소에서 디자인 가이드를 자동으로 불러와 항상 최신 상태를 유지해요.<br />연동은 이미 완료되어 있어서 별도 세팅 없이 파일 수정 후 클로드 코드에 작업을 맡기면 자동으로 처리돼요.</div>
       </div>
 
     </div>
@@ -2545,16 +2545,25 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
       <hr>
 
       <h2 class="section-title">처음이라면 이렇게 시작하세요</h2>
-      <div class="section-txt">클로드 코드로 어드민이 자동화되어 있어요. 내 PC에 어드민을 다운받아주세요.</div>
+      <div class="section-txt">클로드 코드로 어드민이 자동화되어 있어요. 아래 3단계만 따라 하면 시작할 수 있어요.</div>
       <div class="section-card">
         <div class="step-list">
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">1</div>
+              <div class="step-title">작업 폴더 지정</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">VS코드를 열고 <code>파일 &gt; 폴더 열기</code>를 눌러 어드민을 받을 폴더를 골라주세요. (빈 폴더를 하나 새로 만들어 골라도 좋아요.)</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge">2</div>
               <div class="step-title">어드민 내려받기</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">Claude Code 채팅창에 아래 명령어를 붙여넣고 실행하면 내 PC에 어드민을 다운받을 수 있어요.</div>
+              <div class="step-desc">클로드 코드 채팅창에 아래 명령어를 붙여넣고 실행해주세요. 골라둔 폴더 안에 <code>pb-design-guide-admin</code> 폴더가 자동으로 다운돼요.</div>
               <button class="step-btn" onclick="copyCloneCmd(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                 git clone 명령어 복사
@@ -2563,20 +2572,11 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
           <div class="step-item">
             <div class="step-start">
-              <div class="step-badge">2</div>
-              <div class="step-title">내려받은 폴더 열기</div>
-            </div>
-            <div class="step-extra">
-              <div class="step-desc">Claude Code에서 방금 생긴 <code>pb-design-guide-admin</code> 폴더를 열어요.</div>
-            </div>
-          </div>
-          <div class="step-item">
-            <div class="step-start">
               <div class="step-badge step-badge-final">3</div>
-              <div class="step-title">채팅창에 "작업 명령어" 입력</div>
+              <div class="step-title">채팅창에 "안녕" 입력</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">새 요청 건을 진행할 땐 <code>새 작업</code>을 입력해주세요.<br>최근 작업을 이어서 하시려면 <code>작업 현황</code>이라고 입력해주세요.</div>
+              <div class="step-desc">클로드 코드 채팅창에 <code>안녕</code>이라고 입력하면 작업 메뉴가 떠요. 원하는 작업을 골라 시작하면 돼요.</div>
             </div>
           </div>
         </div>
@@ -2639,7 +2639,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
       <h2 class="section-title">GitHub 저장소 구조</h2>
       <div class="section-card">
         <pre class="folder-tree"><span class="dir">abyzweb/publog-design-system</span> <span class="comment">(Public)</span>
-├── <span class="dir">guides/</span>                <span class="comment">← 스킬 가이드 파일 (Claude가 WebFetch로 읽음)</span>
+├── <span class="dir">guides/</span>                <span class="comment">← 스킬 가이드 파일 (클로드가 WebFetch로 읽음)</span>
 │   ├── colors.md
 │   ├── typography.md
 │   ├── layout.md
@@ -2676,7 +2676,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge">1</div>
-              <div class="step-title">Claude Code에서 "배포" 입력</div>
+              <div class="step-title">클로드 코드에서 "배포" 입력</div>
             </div>
             <div class="step-extra">
               <div class="step-desc">버전 확정 후 <code>releases/</code>에 최신 zip(1개만 유지)이 생성돼요.</div>
