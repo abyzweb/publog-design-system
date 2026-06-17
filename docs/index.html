@@ -12370,6 +12370,9 @@ function showPage(id) {
 
   currentPage = id;
   window.scrollTo(0, 0);
+  if (page && ('#' + id) !== location.hash) {
+    history.replaceState(null, '', '#' + id);
+  }
 }
 
 function toggleGroup(header) {
@@ -12394,19 +12397,24 @@ function toggleSubGroup(header) {
   }
 }
 
-function switchMode(mode, btn) {
-  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+const adminPages = ['a01', 'am1', 'am2'];
+function modeForPage(id) {
+  return adminPages.includes(id) ? 'admin' : 'user';
+}
 
-  if (mode === 'user') {
-    document.getElementById('nav-user').style.display = '';
-    document.getElementById('nav-admin').style.display = 'none';
-    showPage('s01');
-  } else {
-    document.getElementById('nav-user').style.display = 'none';
-    document.getElementById('nav-admin').style.display = '';
-    showPage('a01');
-  }
+function applyMode(mode) {
+  const btns = document.querySelectorAll('.mode-btn');
+  btns.forEach(b => b.classList.remove('active'));
+  const target = mode === 'admin' ? btns[1] : btns[0];
+  if (target) target.classList.add('active');
+
+  document.getElementById('nav-user').style.display = mode === 'admin' ? 'none' : '';
+  document.getElementById('nav-admin').style.display = mode === 'admin' ? '' : 'none';
+}
+
+function switchMode(mode, btn) {
+  applyMode(mode);
+  showPage(mode === 'admin' ? 'a01' : 's01');
 }
 
 function filterNav(val) {
@@ -12416,7 +12424,15 @@ function filterNav(val) {
   });
 }
 
-showPage('s01');
+function routeFromHash() {
+  let id = (location.hash || '').replace(/^#/, '');
+  if (id === 'admin') { applyMode('admin'); showPage('a01'); return; }
+  if (!id || id === 'user' || !pageMap[id]) { applyMode('user'); showPage('s01'); return; }
+  applyMode(modeForPage(id));
+  showPage(id);
+}
+routeFromHash();
+window.addEventListener('hashchange', routeFromHash);
 
 document.querySelectorAll('.logo-btn').forEach(btn => {
   btn.addEventListener('click', async () => {
