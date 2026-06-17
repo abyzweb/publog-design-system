@@ -2474,13 +2474,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
               <div class="step-title">클로드 코드로 작업하기</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">git clone로 내려받은 프로젝트 폴더에서 HTML 파일 스타일 검토 / 컴포넌트 추가·수정</div>
-            </div>
-            <div class="step-extra">
-              <button class="step-btn" onclick="copyCloneCmd(this)">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                git clone 명령어 복사
-              </button>
+              <div class="step-desc">Claude Code에서 프로젝트 폴더를 열고 HTML 파일 스타일 검토 / 컴포넌트 추가·수정<br>(처음 설치는 <code>관리 방법 &gt; 클로드 코드로 작업하기</code>에서 안내해요)</div>
             </div>
           </div>
           <div class="step-item">
@@ -2552,11 +2546,40 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 
       <div class="callout-card">
         <div class="callout-card-title">처음이라면 이렇게 시작하세요</div>
-        <div class="callout-card-desc mb14">클로드 코드로 프로젝트가 자동화되어 있어요. 관리자는 AI가 안내하는 흐름에 따라 작업하면 돼요.<br>아래 명령어로 프로젝트를 내려받아(git clone) VS Code에서 폴더를 열고, 채팅창에 <code>새 작업</code>이라고 입력해보세요.</div>
-        <button class="step-btn" onclick="copyCloneCmd(this)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          git clone 명령어 복사
-        </button>
+        <div class="callout-card-desc mb14">클로드 코드로 프로젝트가 자동화되어 있어요. 아래 3단계로 한 번만 준비하면, 이후엔 AI가 안내하는 흐름에 따라 작업하면 돼요.</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge">1</div>
+              <div class="step-title">프로젝트 내려받기 (git clone)</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">Claude Code(또는 VS Code) 터미널에 아래 명령어를 붙여넣고 실행하면 프로젝트 폴더가 생겨요.</div>
+              <button class="step-btn" onclick="copyCloneCmd(this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                git clone 명령어 복사
+              </button>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge">2</div>
+              <div class="step-title">내려받은 폴더 열기</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">Claude Code에서 방금 생긴 <code>pb-design-guide-admin</code> 폴더를 열어요.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-start">
+              <div class="step-badge step-badge-final">3</div>
+              <div class="step-title">채팅창에 "새 작업" 입력</div>
+            </div>
+            <div class="step-extra">
+              <div class="step-desc">이후엔 AI가 단계별로 안내해줘요. 프로젝트가 처음이면 <code>초보자 가이드</code>라고 입력해도 좋아요.</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <h2 class="section-title">주요 작업 명령어</h2>
