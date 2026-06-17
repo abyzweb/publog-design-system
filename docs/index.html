@@ -2584,62 +2584,13 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
         </div>
       </div>
 
-      <h2 class="section-title">어드민 폴더 구조</h2>
-      <div class="section-card">
-        <pre class="folder-tree"><span class="dir">pb-design-guide-admin/</span> <span class="comment">← 이 폴더 = GitHub private repo의 로컬 clone</span>
-├── <span class="dir">CLAUDE.md</span>                            <span class="comment">← Claude 자동 읽기 (관리자 전용 설정)</span>
-├── LOG.md                               <span class="comment">← 디자인 시스템 변경 이력</span>
-├── ADMIN_LOG.md                         <span class="comment">← 어드민·운영 이력</span>
-├── .gitignore
-├── <span class="dir">.github/workflows/</span>
-│   └── sync-to-public.yml               <span class="comment">← push 시 public repo로 자동 동기화</span>
-│
-├── <span class="dir">publog-design-system-skill/</span>          <span class="comment">← 스킬 원본 (zip용)</span>
-│   ├── SKILL.md
-│   └── <span class="dir">guides/</span>
-│       ├── colors.md
-│       ├── typography.md
-│       ├── layout.md
-│       ├── components.md
-│       ├── publog-code.md
-│       └── icons.md
-│
-├── <span class="dir">publog-design-system-html/</span>           <span class="comment">← 가이드 HTML (지금 이 파일)</span>
-│   └── index.html
-│
-├── <span class="dir">releases/</span>                            <span class="comment">← 최신 배포본 zip 1개만 보관</span>
-│   └── publog-design-system-vX.X.X.zip
-│
-└── <span class="dir">received/</span>                            <span class="comment">← 받은 HTML 파일 보관 (git 제외)</span></pre>
-      </div>
-
-      <h2 class="section-title">GitHub 저장소 구조</h2>
-      <div class="section-card">
-        <pre class="folder-tree"><span class="dir">abyzweb/publog-design-system</span> <span class="comment">(Public)</span>
-├── <span class="dir">guides/</span>                <span class="comment">← 스킬 가이드 파일 (클로드가 WebFetch로 읽음)</span>
-│   ├── colors.md
-│   ├── typography.md
-│   ├── layout.md
-│   ├── components.md
-│   ├── publog-code.md
-│   └── icons.md
-└── <span class="dir">docs/</span>
-    └── index.html         <span class="comment">← GitHub Pages (지금 보고 있는 이 가이드 페이지)</span></pre>
-        <div class="flex-12w">
-          <a class="step-btn" href="https://github.com/abyzweb/publog-design-system" target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            GitHub 저장소 바로가기
-          </a>
-          <a class="step-btn" href="https://abyzweb.github.io/publog-design-system/" target="_blank">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            GitHub Pages (가이드 웹페이지)
-          </a>
-        </div>
-      </div>
-
       <div class="callout-card">
         <div class="callout-card-title">GitHub가 뭐예요?</div>
         <div class="callout-card-desc">파일을 인터넷에 저장·배포하는 클라우드 저장소예요.<br /> 클로드가 이 저장소에서 디자인 가이드를 자동으로 불러와 항상 최신 상태를 유지해요.<br />연동은 이미 완료되어 있어서 별도 세팅 없이 파일 수정 후 클로드 코드에 작업을 맡기면 자동으로 처리돼요.</div>
+        <a class="step-btn" href="https://github.com/abyzweb/publog-design-system" target="_blank" style="margin-top:12px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          GitHub 저장소 바로가기
+        </a>
       </div>
 
       <div class="callout-card">
