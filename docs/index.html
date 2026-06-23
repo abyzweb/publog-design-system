@@ -1325,7 +1325,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           </div>
           <div>
             <div class="check-card-title">완성 후 웹팀에 검수를 요청해주세요</div>
-            <div class="check-card-desc">AI는 가이드를 항상 완벽하게 따르지 않아요. 가이드에 없는 요소는 임의로 생성하기도 해요. <br />작업이 끝나면 노션 양식으로 웹팀에 검수 요청해 주세요.</div>
+            <div class="check-card-desc">AI는 가이드를 항상 완벽하게 따르지 않아요. 가이드에 없는 요소는 임의로 생성하기도 해요. <br />작업이 끝나면 완성된 HTML 파일을 평소 채널(메신저·메일)로 웹팀에 전달해 검수 요청해 주세요.</div>
           </div>
         </div>
         <div class="check-card">
@@ -1393,13 +1393,10 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge step-badge-final">5</div>
-              <div class="step-title">노션에 업로드 → 웹팀에 확인 요청</div>
+              <div class="step-title">웹팀에 파일 전달 → 검수 요청</div>
             </div>
             <div class="step-extra">
-              <a class="step-btn" href="https://www.notion.so/c68837e8a33543a6911613a8af68cc42?v=e72ca864e1bc4f65ba140f6cecfbadaa" target="_blank">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                노션 바로가기
-              </a>
+              <div class="step-desc">완성된 HTML 파일을 평소 채널(메신저·메일)로 웹팀에 전달하고 검수를 요청해 주세요.</div>
             </div>
           </div>
         </div>
@@ -1444,13 +1441,10 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
           <div class="step-item">
             <div class="step-start">
               <div class="step-badge step-badge-final">4</div>
-              <div class="step-title">노션에서 웹팀에 수정 요청</div>
+              <div class="step-title">웹팀에 파일 전달 → 검수 요청</div>
             </div>
             <div class="step-extra">
-              <a class="step-btn" href="https://www.notion.so/c68837e8a33543a6911613a8af68cc42?v=e72ca864e1bc4f65ba140f6cecfbadaa" target="_blank">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                노션 바로가기
-              </a>
+              <div class="step-desc">다운로드한 HTML 파일을 평소 채널(메신저·메일)로 웹팀에 전달하고 검수를 요청해 주세요.</div>
             </div>
           </div>
         </div>
@@ -2506,7 +2500,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
               <div class="step-title">작업을 마칠 때 "작업 끝" 입력</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">채팅창에 <code>작업 끝</code>이라고 입력하면,<br>안 올린 변경·로그·노션 처리 중 빠진 게 없는지 클로드가 알아서 점검해줘요.</div>
+              <div class="step-desc">채팅창에 <code>작업 끝</code>이라고 입력하면,<br>안 올린 변경·로그·받은 파일 백업/완료 처리 중 빠진 게 없는지 클로드가 알아서 점검해줘요.</div>
             </div>
           </div>
         </div>
@@ -2521,13 +2515,13 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
             <tr><th>명령어</th><th>설명</th></tr>
           </thead>
           <tbody>
-            <tr><td class="am1-nowrap"><code>새 작업</code></td><td>새 요청(노션·received/)을 확인하고 검수할 파일을 준비해요.<br />실제 검수·수정은 <code>이어서</code>로 진행해요.</td></tr>
-            <tr><td class="am1-nowrap"><code>이어서</code></td><td>안 끝난 작업(노션·received·로그)을 확인해 어느 단계부터 이어갈지 안내해요.<br />(별칭: <code>작업 현황</code>·<code>남은 작업</code>)</td></tr>
+            <tr><td class="am1-nowrap"><code>새 작업</code></td><td>새 요청(받은 파일·백업 repo)을 확인하고 검수할 파일을 준비해요.<br />실제 검수·수정은 <code>이어서</code>로 진행해요.</td></tr>
+            <tr><td class="am1-nowrap"><code>이어서</code></td><td>안 끝난 작업(받은 파일·백업 repo·로그)을 확인해 어느 단계부터 이어갈지 안내해요.<br />(별칭: <code>작업 현황</code>·<code>남은 작업</code>)</td></tr>
             <tr><td class="am1-nowrap"><code>컴포넌트 추가·수정</code></td><td>색상·컴포넌트 등 디자인 규칙을 직접 바꿔요. guides·가이드 페이지·로그를 함께 갱신해요.</td></tr>
             <tr><td class="am1-nowrap"><code>업데이트 받기</code></td><td>다른 사람이 GitHub에 올린 변경을 내 폴더로 받아와요.</td></tr>
             <tr><td class="am1-nowrap"><code>배포</code></td><td>스킬 새 버전(zip)을 만들고 버전·로그·GitHub 반영까지 정리해요.</td></tr>
             <tr><td class="am1-nowrap"><code>로그 저장</code></td><td>대화를 중간에 끊을 때 작업 내용을 로그(LOG.md·ADMIN_LOG.md)에 바로 기록해요.</td></tr>
-            <tr><td class="am1-nowrap"><code>작업 끝</code></td><td>세션을 닫기 전 누락된 마무리(안 올린 변경·로그·노션 처리)가 없는지 점검해요.<br />(별칭: <code>오늘 작업 끝</code>·<code>퇴근</code>)</td></tr>
+            <tr><td class="am1-nowrap"><code>작업 끝</code></td><td>세션을 닫기 전 누락된 마무리(안 올린 변경·로그·받은 파일 백업/완료 처리)가 없는지 점검해요.<br />(별칭: <code>오늘 작업 끝</code>·<code>퇴근</code>)</td></tr>
           </tbody>
         </table>
       </div>
@@ -2553,11 +2547,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
               <div class="step-title">작업 요청건 확인</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">노션으로 "요청" 공유</div>
-              <a class="step-btn" href="https://www.notion.so/c68837e8a33543a6911613a8af68cc42?v=e72ca864e1bc4f65ba140f6cecfbadaa" target="_blank">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                노션 바로가기
-              </a>
+              <div class="step-desc">받은 HTML 파일은 평소 채널(메신저·메일)로 전달받아 received/에 넣어요.<br>원본·작업본은 별도 백업 repo에 자동 백업돼요.</div>
             </div>
           </div>
           <div class="step-item">
@@ -2587,7 +2577,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
               <div class="step-title">작업 완료</div>
             </div>
             <div class="step-extra">
-              <div class="step-desc">노션으로 "작업 완료" 공유</div>
+              <div class="step-desc">완료 시 평소 채널(메신저·메일)로 요청자에게 통보</div>
             </div>
           </div>
         </div>
