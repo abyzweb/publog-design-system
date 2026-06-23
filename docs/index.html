@@ -1010,10 +1010,7 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
 
 /* ── bg-guide 브랜드 포지셔닝 ── */
 .bg-bp-grid     { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-.bg-bp-card     { padding:20px; border-radius:10px; background:var(--belief); border:1px solid var(--border); }
-.bg-bp-card.ct  { border-top:3px solid var(--trendy); }
-.bg-bp-card.cf  { border-top:3px solid var(--friendly); }
-.bg-bp-card.ca  { border-top:3px solid var(--attention); }
+.bg-bp-card     { padding:20px; border-radius:10px; background:var(--belief); border:1px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,0.04); }
 .bg-bp-title    { font-weight:700; font-size:13px; color:var(--trendy); margin-bottom:7px; }
 .bg-bp-desc     { font-size:12px; color:var(--text-muted); line-height:1.7; }
 
@@ -2713,15 +2710,15 @@ code { background: #f3f4ff; color: #5B5FDE; font-size: 0.85em; padding: 2px 6px;
       <div class="section-card">
         <div class="bg-guide">
           <div class="bg-bp-grid">
-            <div class="bg-bp-card ct">
+            <div class="bg-bp-card">
               <div class="bg-bp-title">🎨 굿즈 크리에이터</div>
               <div class="bg-bp-desc">팬덤·덕질 굿즈, 스티커·포토카드 소량 제작</div>
             </div>
-            <div class="bg-bp-card cf">
+            <div class="bg-bp-card">
               <div class="bg-bp-title">👰 라이프 이벤트</div>
               <div class="bg-bp-desc">웨딩, 돌잔치, 졸업, 생일 기념 굿즈</div>
             </div>
-            <div class="bg-bp-card ca">
+            <div class="bg-bp-card">
               <div class="bg-bp-title">🏢 기업·단체</div>
               <div class="bg-bp-desc">어린이집, 스포츠팀, 종교단체, 동호회</div>
             </div>

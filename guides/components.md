@@ -195,6 +195,8 @@
 .card-belief { background: var(--belief); }
 ```
 
+> **카드 포인트 라인 금지:** 카드·박스 상단에 색상 강조 라인(`border-top: 3px solid`, accent line 등)을 사용하지 않는다. 카드 구분은 `background`·`box-shadow`·`border-radius` 등으로 처리한다.
+
 ```html
 <div class="card">
   <!-- 카드 내용 -->
