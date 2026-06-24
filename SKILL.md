@@ -1,9 +1,9 @@
 ---
-name: publog-design-system
+name: brandguide-publog
 description: '"퍼블로그 디자인 시스템" 입력 시 활성화. 퍼블로그(publog.co.kr) 웹 디자인 표준 적용. HTML 수정·신규 컴포넌트 생성·가이드 업데이트 지원.'
 ---
 
-<!-- 테스트 시: name을 publog-design-system-test 로 변경 -->
+<!-- 테스트 시: name을 brandguide-publog-test 로 변경 -->
 
 # 퍼블로그 디자인 시스템
 
